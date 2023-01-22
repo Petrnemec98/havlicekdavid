@@ -1,0 +1,7 @@
+{var $title = $projectDetail->name}
+{var $back_btn = "Project:default"}
+{block content}
+
+<h2>{$projectDetail->project_date | date:'d. m. Y'}</h2>
+<p>{$projectDetail->description}</p>
+{$projectDetail->mediabox|noescape}

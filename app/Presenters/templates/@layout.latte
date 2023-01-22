@@ -4,16 +4,23 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
-	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
+	<link rel="stylesheet" href="{$basePath}/assets/css/main.css">
+
+	<title>{$title} | David Havlíček</title>
 </head>
 
 <body>
-	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+	<header>
+		{if !$presenter->isLinkCurrent('Homepage:default')}
+			<button><a n:href="{$back_btn}">BACK</a></button>
+		{/if}
+		<aside><p>David Havliček</p></aside>
+		<h1>{$title}</h1>
+	</header>
 
 	{include content}
 
-	{block scripts}
-	<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
-	{/block}
+	{block lama}
+
 </body>
 </html>

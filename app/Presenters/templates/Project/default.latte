@@ -1,0 +1,17 @@
+{var $title = "Foto a video tvfsdfsdůrce"}
+{var $back_btn = "Homepage:default"}
+{block content}
+<section>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur vitae diam non enim vestibulum interdum. Aenean placerat. Mauris elementum mauris vitae tortor. Integer lacinia.</p>
+	<a n:href=":create">Vytvořit novou stránku</a>
+</section>
+
+{/block}
+
+{block lama}
+	{foreach $projects as $project}
+		<h2><a n:href="Project:detail projecturl=>$project->url">{$project->name}</a></h2>
+		<a>{$project->project_date | date:'d. m. Y'}</a>
+
+	{/foreach}
+{/block}
