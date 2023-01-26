@@ -10,8 +10,12 @@ use Nette;
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
 	protected $projectModel;
-	public function __construct(\App\Models\ProjectModel $projectModel)
+	protected $tagModel;
+
+	public function __construct(\App\Models\ProjectModel $projectModel, \App\Models\TagModel $tagModel)
 	{
 		$this->projectModel = $projectModel;
+		$this->tagModel = $tagModel;
 	}
+
 }

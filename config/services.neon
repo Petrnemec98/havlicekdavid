@@ -9,3 +9,4 @@ search:
 services:
 	- App\Router\RouterFactory::createRouter
 	- App\Models\ProjectModel
+	- App\Models\TagModel

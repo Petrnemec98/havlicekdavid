@@ -24,11 +24,38 @@ class ProjectModel
 
 	public function getAllProjects(){
 		return $this->db->table("project")->order("id DESC");
+		return $this->db->table("project_has_tag")->order("id DESC");
 	}
 
 	public function createNewProject($data){
 		$data["url"] = Strings::webalize($data["name"]);
-		$this->db->table("project")->insert($data);
+
+
+		$this->db->beginTransaction();
+		$row = $this->db->table("project")->insert($data);
+		$this->db->commit();
+		return $row->id;
+	}
+
+	public function updateProject($data){
+		$tags=$data["tags"];
+		$id = $data["id"];
+		unset($data["tags"]);
+		unset($data["id"]);
+
+		// BeginTransaction => Dělá z toho jednu operaci "atomickou operaci", byť je zapis do více tabulek
+		$this->db->beginTransaction();
+		$this->db->table('project')->wherePrimary($id)->update($data);
+
+		//Používáme foreach pro, aby se dalo použít více tagů k jednomu projektu = doi více řádků
+		foreach ($tags as $key => $value){
+			$this->db->table("project_has_tag")->insert([
+				"project_id" => $id,
+				"tag_id"=> $value
+			]);
+		}
+		$this->db->commit();
+
 	}
 
 }
