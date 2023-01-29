@@ -10,17 +10,32 @@
 </head>
 
 <body>
-	<header>
+	<header class="max-width block-center">
 		{if !$presenter->isLinkCurrent('Homepage:default')}
 			<button><a n:href="{$back_btn}">BACK</a></button>
 		{/if}
 		<aside><p>David Havliček</p></aside>
 		<h1>{$title}</h1>
 	</header>
-
+<div class="max-width block-center">
 	{include content}
 
-	{block lama}
+</div>
+
+<footer>
+	<div class="max-width block-center">
+		<section class="footer-box">
+			<h2>
+				David Havlíček
+			</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent dapibus. Maecenas lorem. Donec quis nibh at felis congue commodo. Donec vitae arcu. Donec quis nibh at felis congue commodo. Morbi scelerisque luctus velit. Maecenas sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos
+				<a n:href="About:default">Zobrazit více...</a>
+			</p>
+		</section>
+	</div>
+
+</footer>
 
 </body>
 </html>

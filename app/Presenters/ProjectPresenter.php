@@ -17,7 +17,7 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 	}
 
 	public function renderDefault(){
-		$this->template->projects = $this->projectModel->getAllProjects();
+		$this->template->projects = $this->projectModel->getVisibleProjects();
 	}
 
 	public function renderCreate(){

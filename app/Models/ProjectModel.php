@@ -22,10 +22,14 @@ class ProjectModel
 		return $this->db->table('project')->wherePrimary($id)->fetch();
 	}
 
-	public function getAllProjects(){
-		return $this->db->table("project")->order("id DESC");
-		return $this->db->table("project_has_tag")->order("id DESC");
+	public function getAllProjects() {
+		return $this->db->table("project")->order("id DESC")->fetchAll();
 	}
+
+	public function getVisibleProjects() {
+		return $this->db->table("project")->order("id DESC")->where("visible = 1");
+	}
+
 
 	public function createNewProject($data){
 		$data["url"] = Strings::webalize($data["name"]);

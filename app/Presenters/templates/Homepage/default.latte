@@ -6,10 +6,19 @@
 </section>
 
 <section>
-	<button> <a n:href="Contact:default">Mám zájem o fotky nebo video</a></button>
-	<button> <a n:href="Project:default">Zobrazit všechny projekty</a></button>
+	<button class="center-button main_btn"> <a n:href="Contact:default">Mám zájem o fotky nebo video</a></button>
 </section>
 
 <section>
+	{foreach $projects as $project}
+	<a n:href="Project:detail projecturl=>$project->project->url">
 
+		<h1>{$project->project->name}</h1>
+		<p>{$project->project->project_date}</p>
+		<img src="{$basePath}/image/projects/{$project->project->id}/{$project->image_format}.jpg">
+		<span n:foreach="$project->project->related(project_has_tag) as $tag" n:class="tag—box, $tag->tag->id">{$tag->tag->name}</span>
+	</a>
+	{/foreach}
 </section>
+
+<button class="center-button main_btn"> <a n:href="Project:default">Zobrazit všechny projekty...</a></button>

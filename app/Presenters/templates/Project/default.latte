@@ -7,11 +7,69 @@
 	<a n:href=":edit">upravit form</a>
 </section>
 
-{/block}
-
-{block lama}
 	{foreach $projects as $project}
-		<h2><a n:href="Project:detail projecturl=>$project->url">{$project->name}</a></h2>
-		<a>{$project->project_date | date:'d. m. Y'}</a>
+
+		{var $format=($iterator->counter%4>=2)?"landscape":"square"}
+		<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/{$format}.jpg');" n:class="project, $format">
+			<div n:if="$iterator->counter%4>=2">na šířku</div>
+			<h2><a n:href="Project:detail projecturl=>$project->url">{$project->name}</a></h2>
+			<a>{$project->project_date | date:'d. m. Y'}</a>
+			<span n:foreach="$project->related(project_has_tag) as $tag" n:class="tag—box, $tag->tag->id">{$tag->tag->name}</span>
+
+		</div>
+
 	{/foreach}
 {/block}
+
+
+
+<a>
+	<div class="cal-4">
+		<h2></h2>
+		<p>
+
+		</p>
+		<div>
+			<span>
+
+			</span>
+			<span>
+
+			</span>
+		</div>
+	</div>
+</a>
+
+<a>
+	<div class="col-2">
+		<h2></h2>
+		<p>
+
+		</p>
+		<div>
+			<span>
+
+			</span>
+			<span>
+
+			</span>
+		</div>
+	</div>
+</a>
+
+<a>
+	<div class="col-2">
+		<h2></h2>
+		<p>
+
+		</p>
+		<div>
+			<span>
+
+			</span>
+			<span>
+
+			</span>
+		</div>
+	</div>
+</a>

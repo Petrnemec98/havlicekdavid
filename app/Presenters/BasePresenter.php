@@ -11,11 +11,13 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
 	protected $projectModel;
 	protected $tagModel;
+	protected $homepageModel;
 
-	public function __construct(\App\Models\ProjectModel $projectModel, \App\Models\TagModel $tagModel)
+	public function __construct(\App\Models\ProjectModel $projectModel, \App\Models\TagModel $tagModel, \App\Models\HomepageModel $homepageModel)
 	{
 		$this->projectModel = $projectModel;
 		$this->tagModel = $tagModel;
+		$this->homepageModel = $homepageModel;
 	}
 
 }
