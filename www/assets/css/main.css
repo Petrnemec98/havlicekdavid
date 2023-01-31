@@ -4,6 +4,10 @@
 	font-style: normal;
 	src: url('../fonts/BebasNeue-Regular.ttf') format('opentype');
 }
+*{
+	text-decoration: none;
+}
+
 html{
 	--black-color:black;
 	--white-color:white;
@@ -18,6 +22,8 @@ body{
 
 h1,h2, h3, h4, h5, h6, a, span, p{
 	font-family: 'BebasNeue';
+	margin-block-start: 0em;
+	margin-block-end: 0em;
 }
 
 a{
@@ -87,3 +93,69 @@ img{
 	align-items: center;
 	margin: auto;
 }
+
+/*Projects*/
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 30px;
+	margin-top: 30px;
+}
+
+.gallery .project{
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 330px;
+}
+
+.item.square {
+	grid-column: span 1;
+}
+
+.item.landscape {
+	grid-column: span 2;
+}
+
+.tags-box{
+	position:relative;
+	top:10px;
+	text-align: right;
+	right: 10px;
+}
+
+.tags-box span{
+	padding: 3px 10px;
+	border-radius: 10px;
+	color: var(--white-color);
+	text-decoration: none;
+	text-align: center;
+}
+
+.tag-box.projekt1{
+	background-color: var(--oragne-color);
+}
+.tag-box.projekt2{
+	background-color: var(--lighblue-color);
+}
+
+.project-header{
+	margin: 0px;
+	z-index: 3;
+	position: relative;
+	height: 100%;
+}
+
+.header-content{
+	position: absolute;
+	bottom: 10px;
+	margin-left: 10px;
+}
+
+.header-content span{
+	color: var(--white-color);
+}
+
+
+
+
+

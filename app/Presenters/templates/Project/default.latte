@@ -3,73 +3,32 @@
 {block content}
 <section>
 	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur vitae diam non enim vestibulum interdum. Aenean placerat. Mauris elementum mauris vitae tortor. Integer lacinia.</p>
-	<a n:href=":create">Vytvořit novou stránku</a>
-	<a n:href=":edit">upravit form</a>
+
 </section>
 
+<div class="gallery">
 	{foreach $projects as $project}
 
 		{var $format=($iterator->counter%4>=2)?"landscape":"square"}
-		<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/{$format}.jpg');" n:class="project, $format">
-			<div n:if="$iterator->counter%4>=2">na šířku</div>
-			<h2><a n:href="Project:detail projecturl=>$project->url">{$project->name}</a></h2>
-			<a>{$project->project_date | date:'d. m. Y'}</a>
-			<span n:foreach="$project->related(project_has_tag) as $tag" n:class="tag—box, $tag->tag->id">{$tag->tag->name}</span>
+		<a n:href="Project:detail projecturl=>$project->url" n:class="item, $format">
+			<div  style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/{$format}.jpg');" n:class="project, $format">
+				<div class="project-header">
+					<div class="tags-box">
+						<span n:foreach="$project->related(project_has_tag) as $tag" n:class="tag-box, projekt.$tag->tag->id">{$tag->tag->name}</span>
+					</div>
 
-		</div>
+					<div class="header-content">
+						<span class="date">{$project->project_date | date:'d. m. Y'}</span>
+						<h2 class="project-cover">{$project->name}</h2>
+					</div>
+				</div>
+			</div>
+		</a>
 
 	{/foreach}
+</div>
+
+
+	<a n:href=":create">Vytvořit novou stránku</a>
+	<a n:href=":edit">upravit form</a>
 {/block}
-
-
-
-<a>
-	<div class="cal-4">
-		<h2></h2>
-		<p>
-
-		</p>
-		<div>
-			<span>
-
-			</span>
-			<span>
-
-			</span>
-		</div>
-	</div>
-</a>
-
-<a>
-	<div class="col-2">
-		<h2></h2>
-		<p>
-
-		</p>
-		<div>
-			<span>
-
-			</span>
-			<span>
-
-			</span>
-		</div>
-	</div>
-</a>
-
-<a>
-	<div class="col-2">
-		<h2></h2>
-		<p>
-
-		</p>
-		<div>
-			<span>
-
-			</span>
-			<span>
-
-			</span>
-		</div>
-	</div>
-</a>
