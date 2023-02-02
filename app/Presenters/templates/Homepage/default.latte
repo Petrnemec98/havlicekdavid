@@ -9,13 +9,13 @@
 	<button class="center-button main_btn"> <a n:href="Contact:default">Mám zájem o fotky nebo video</a></button>
 </section>
 
-<section class="gallery-homepage">
+<section class="gallery grid-homepage">
 	{foreach $projects as $project}
-	<a n:href="Project:detail projecturl=>$project->project->url" n:class="item.homepage.$project->id">
-		<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->project->id}/{$project->image_format}.jpg');" n:class="project">
+	<a n:href="Project:detail projecturl=>$project->project->url" n:class="item.$project->id">
+		<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->project->id}/{$project->image_format}.jpg');" n:class="project, $project->image_format">
 			<div class="project-header">
 				<div class="tags-box">
-					<span n:foreach="$project->project->related(project_has_tag) as $tag" n:class="tag—box, $tag->tag->id">{$tag->tag->name}</span>
+					<span n:foreach="$project->project->related(project_has_tag) as $tag" n:class="tag-box, projekt.$tag->tag->id">{$tag->tag->name}</span>
 				</div>
 
 				<div class="header-content">
@@ -26,6 +26,19 @@
 		</div>
 	</a>
 	{/foreach}
+
+	<a n:href="About:detail" n:class="item6">
+		<div style="background-image: url('{$basePath|noescape}/image/me/homepage.jpg');" n:class="project, square">
+			<div class="project-header">
+				<div class="header-content me">
+					<h2 class="project-cover">David Havlíček</h2>
+					<p >
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent dapibus. Maecenas lorem. <span>Zobrazit více...</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</a>
 </section>
 
 <button class="center-button main_btn"> <a n:href="Project:default">Zobrazit všechny projekty...</a></button>
