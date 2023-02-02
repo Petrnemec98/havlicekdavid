@@ -15,6 +15,7 @@ html{
 	--darkblue-color: #1A2238;
 	--lighblue-color: #9DAAF2;
 	--yellow-color: #F4DB7D;
+	--hover-speed:
 }
 body{
 	margin: 0;
@@ -29,6 +30,10 @@ h1,h2, h3, h4, h5, h6, a, span, p{
 a{
 	color: var(--darkblue-color);
 	font-size: 1rem;
+}
+
+a:hover .project-background{
+	opacity: 80%;
 }
 
 h1{
@@ -151,6 +156,7 @@ img{
 	top:10px;
 	text-align: right;
 	right: 10px;
+	z-index: 5
 }
 
 .tags-box span{
@@ -175,10 +181,26 @@ img{
 	height: 100%;
 }
 
+.project-background{
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	background: var(--darkblue-color);
+	background: linear-gradient(9deg, rgba(26,34,56,1) 10%, rgba(255,255,255,0) 100%);
+	opacity: 50%;
+	-webkit-transition: all 0.3s 0s ease;
+	-moz-transition: all 0.3s 0s ease;
+	-o-transition: all 0.3s 0s ease;
+	transition: all 0.3s 0s ease;
+}
+
 .header-content{
 	position: absolute;
 	bottom: 10px;
 	margin-left: 10px;
+	z-index: 5
 }
 
 .header-content span{
