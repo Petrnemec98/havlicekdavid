@@ -10,16 +10,15 @@
 </head>
 
 <body>
-	<header class="max-width block-center">
+	<header class="max-width">
 		{if !$presenter->isLinkCurrent('Homepage:default')}
 			<button><a n:href="{$back_btn}">BACK</a></button>
 		{/if}
 		<aside><p>David Havliček</p></aside>
 		<h1>{$title}</h1>
 	</header>
-<div class="max-width block-center">
+<div class="max-width block-center flex-box">
 	{include content}
-
 </div>
 
 <footer>

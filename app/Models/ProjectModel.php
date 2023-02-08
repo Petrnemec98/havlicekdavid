@@ -23,11 +23,12 @@ class ProjectModel
 	}
 
 	public function getAllProjects() {
-		return $this->db->table("project")->order("id DESC")->fetchAll();
+		return $this->db->table("project")->order("order, id")->fetchAll();
 	}
 
+
 	public function getVisibleProjects() {
-		return $this->db->table("project")->order("id DESC")->where("visible = 1");
+		return $this->db->table("project")->order("order DESC, id DESC")->where("visible = 1");
 	}
 
 
