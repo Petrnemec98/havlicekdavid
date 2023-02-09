@@ -20,4 +20,9 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		$this->homepageModel = $homepageModel;
 	}
 
+	public function setFormRenderer(Nette\Application\UI\Form $form){
+		$renderer = $form->getRenderer();
+		$renderer->wrappers['pair']['container']="div class=input-contain";
+	}
+
 }

@@ -234,6 +234,15 @@ a.main-btn:hover{
 	color: var(--white-color);
 }
 
+.input-contain{
+	position: relative;
+}
+input{
+	height: 5rem;
+	width: 40rem;
+	border: 2px solid black;
+	border-radius: 1rem;
+}
 @media only screen and (max-width: 720px) {
 	.grid-homepage{
 		grid-template-columns: repeat(1, 1fr);

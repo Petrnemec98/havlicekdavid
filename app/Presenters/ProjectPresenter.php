@@ -25,7 +25,7 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 
 	public function createComponentProjectForm() :Form {
 		$form = new Form;
-
+		$this->setFormRenderer($form);
 		$form->addText("name", "Název:")
 			->setRequired()
 			->setHtmlAttribute("class", "input input-title");
@@ -51,9 +51,10 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 		$form->addCheckboxList("tags","Kategorie:", $this->tagModel->getTagsPairs());
 		$form->addText("project_date", "Datum:")->setHtmlType("date")->setRequired();
 		$form->addTextArea("description", "Popis:")->setRequired();
-		//$form->addUpload("image_square", "Obrázek 1:1");
-		//$form->addUpload("image_portrait", "Obrázek na výšku");
-		//$form->addUpload("image_landscape", "Obrázek na šířku");
+		$form->addUpload("image_square", "Obrázek 1:1");
+		$form->addUpload("image_portrait", "Obrázek na výšku");
+		$form->addUpload("image_landscape", "Obrázek na šířku");
+		$form->addMultiUpload('images', 'Fotky');
 		$form->addTextArea("mediabox", "Prostor pro video");
 		$form->addTextArea("footer", "Závěr:");
 		$form->addCheckbox("visible", "zobrazit");
@@ -64,7 +65,7 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 		return $form;
 	}
 
-	public function editFormSuccess(array $data) : void{
+	public function editFormSuccess($form, $data) : void{
 		$this->projectModel->updateProject($data);
 		$this->redirect(":default");
 	}

@@ -6,12 +6,15 @@ namespace App\Models;
 
 use Nette;
 use Nette\Utils\Strings;
+use Nette\Utils\Image;
 
 class ProjectModel
 {
 	private $db;
-	public function __construct(\Nette\Database\Explorer $db){
+	private $dir;
+	public function __construct(\Nette\Database\Explorer $db, \App\Services\Direr $dir){
 		$this->db = $db;
+		$this->dir = $dir;
 	}
 
 	public function getProjectByUrl($url){
@@ -42,11 +45,64 @@ class ProjectModel
 		return $row->id;
 	}
 
-	public function updateProject($data){
+	public function processImage($image, $format, $projectId){
+		$dir = $this->dir->wwwDir."/image/projects/$projectId";
+		$this->makeFolder($dir);
+
+		$image->move("$dir/$format.jpg");
+	}
+
+	public function processGalleryImage($image, $projectId){
+		$dir = $this->dir->wwwDir."/image/projects/$projectId";
+
+		$imageId = $this->db->table("image")->insert([
+			"project_id"=> $projectId
+		]);
+
+		$image = Image::fromFile($image->temporaryFile);
+		$image->resize(null, 1920);
+		$image->save("$dir/jpg/$imageId.jpg");
+
+		$image->resize(null, 330);
+		$image->save("$dir/webp/$imageId.webp");
+	}
+
+	private function makeFolder($dir){
+		if(!is_dir($dir)){
+			mkdir($dir,0777, true);
+		}
+		return true;
+
+	}
+
+	public function updateProject($formdata){
+		$data = $formdata;
 		$tags=$data["tags"];
 		$id = $data["id"];
 		unset($data["tags"]);
 		unset($data["id"]);
+
+
+		if ($formdata->image_landscape->isOk()){
+			$data['image_landscape']=$this->processImage($formdata->image_landscape, "landscape", $id);
+		}
+		if ($formdata->image_square->isOk()){
+			$data['image_square']=$this->processImage($formdata->image_square, "square", $id);
+		}
+		if ($formdata->image_portrait->isOk()){
+			$data['image_portrait']=$this->processImage($formdata->image_portrait, "portrait", $id);
+		}
+		unset($data['image_landscape']);
+		unset($data['image_square']);
+		unset($data['image_portrait']);
+
+		$this->makeFolder($this->dir->wwwDir."/image/projects/$id/webp");
+		$this->makeFolder($this->dir->wwwDir."/image/projects/$id/jpg");
+
+		foreach($data->images as $image){
+			$this->processGalleryImage($image, $id);
+		}
+		unset($data['images']);
 
 		// BeginTransaction => Dělá z toho jednu operaci "atomickou operaci", byť je zapis do více tabulek
 		$this->db->beginTransaction();
