@@ -25,12 +25,19 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 
 	public function createComponentProjectForm() :Form {
 		$form = new Form;
-		$this->setFormRenderer($form);
-		$form->addText("name", "Název:")
+
+		$form->addText("name", "")
 			->setRequired()
-			->setHtmlAttribute("class", "input input-title");
-		$form->addText("project_date", "Datum:")->setHtmlType("date")->setRequired();
-		$form->addSubmit("send", "Odeslat");
+			->setHtmlAttribute("class", "input input-title")
+			->setHtmlAttribute("placeholder", "Název projektu");
+		$form->addText("project_date", "")
+			->setHtmlType("date")
+			->setRequired()
+			->setHtmlAttribute("class", "input input-title")
+			->setHtmlAttribute("placeholder", "Datum");
+
+		$form->addSubmit("send", "Vytvořit")
+			->setHtmlAttribute("class", "center-button main-btn");
 		$form->onSuccess[]=[$this, "sendSuccessed"];
 
 		return $form;

@@ -1,7 +1,15 @@
 {var $title = $projectDetail->name}
 {var $back_btn = "Project:default"}
+{varType Nette\Database\Table\ActiveRow $projectDetail}
 {block content}
 
 <h2>{$projectDetail->project_date | date:'d. m. Y'}</h2>
 <p>{$projectDetail->description}</p>
 {$projectDetail->mediabox|noescape}
+
+
+{foreach $projectDetail->related(image) as $image}
+	<a href="{$basePath}/image/projects/{$projectDetail->id}/jpg/{$image->id}.jpg" data-lightbox="roadtrip"><img src="{$basePath}/image/projects/{$projectDetail->id}/webp/{$image->id}.webp"></a>
+{/foreach}
+
+<a n:href=":edit, id =>$projectDetail->id">upravit form</a>

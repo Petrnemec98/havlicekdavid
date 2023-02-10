@@ -23,7 +23,7 @@ body{
 	margin: 0;
 }
 
-h1,h2, h3, h4, h5, h6, a, span, p{
+h1,h2, h3, h4, h5, h6, a, span, p, input{
 	font-family: 'BebasNeue';
 	margin-block-start: 0em;
 	margin-block-end: 0em;
@@ -111,7 +111,7 @@ img{
 	max-height: 200px;
 }
 
-a.main-btn{
+.main-btn{
 	background-color: var(--darkblue-color);
 	opacity: 90%;
 	height: 45px;
@@ -124,7 +124,7 @@ a.main-btn{
 	text-decoration: none;
 	font-size: 1.23rem;
 }
-a.main-btn:hover{
+.main-btn:hover{
 	opacity: 100%;
 }
 
@@ -234,15 +234,31 @@ a.main-btn:hover{
 	color: var(--white-color);
 }
 
-.input-contain{
-	position: relative;
+/*Form album*/
+form{
+	margin: auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+}
+table{
+	width: 70%;
+	margin: auto;
+	text-align: center;
 }
 input{
-	height: 5rem;
-	width: 40rem;
-	border: 2px solid black;
-	border-radius: 1rem;
+	width: 100%;
+	margin: 35px 0px 0px 0px;
+	height: 35px;
+	border: none;
+	border-bottom: var(--oragne-color) 2px solid;
+	font-size: 2rem;
 }
+form .main-btn{
+	margin: 35px auto;
+}
+
 @media only screen and (max-width: 720px) {
 	.grid-homepage{
 		grid-template-columns: repeat(1, 1fr);

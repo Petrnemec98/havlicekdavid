@@ -21,8 +21,8 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 	}
 
 	public function setFormRenderer(Nette\Application\UI\Form $form){
-		$renderer = $form->getRenderer();
-		$renderer->wrappers['pair']['container']="div class=input-contain";
+		//$renderer = $form->getRenderer();
+		//$renderer->wrappers['pair']['container']="div class=input-contain";
 	}
 
 }
