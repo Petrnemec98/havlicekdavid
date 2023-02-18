@@ -49,11 +49,14 @@ class ProjectModel
 		$dir = $this->dir->wwwDir."/image/projects/$projectId";
 		$this->makeFolder($dir);
 
-		$image->move("$dir/$format.jpg");
+		$image = Image::fromFile($image->temporaryFile);
+		$image->resize(null, 720);
+		$image->save("$dir/$format.jpg");
 	}
 
 	public function processGalleryImage($image, $projectId){
 		$dir = $this->dir->wwwDir."/image/projects/$projectId";
+
 
 		$imageId = $this->db->table("image")->insert([
 			"project_id"=> $projectId
@@ -63,7 +66,7 @@ class ProjectModel
 		$image->resize(null, 1920);
 		$image->save("$dir/jpg/$imageId.jpg");
 
-		$image->resize(null, 330);
+		$image->resize(null, 720);
 		$image->save("$dir/webp/$imageId.webp");
 	}
 

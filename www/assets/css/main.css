@@ -259,12 +259,36 @@ form .main-btn{
 	margin: 35px auto;
 }
 
+.gallery-detail {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 50px 20px;
+}
+
+.gallery-detail a {
+	flex-basis: calc(25% - 15px);
+	margin-bottom: 15px;
+}
+
+.gallery-detail a img {
+	width: 100%;
+	height: 330px;
+	object-fit: cover;
+	object-position: center center;
+}
+
 @media only screen and (max-width: 720px) {
 	.grid-homepage{
 		grid-template-columns: repeat(1, 1fr);
 		grid-template-rows: repeat(1, 1fr);
 		order: 2;
 		width: 100%;
+	}
+
+	.gallery-detail a {
+		flex-basis: calc(50% - 5px);
+		margin-bottom: 5px;
 	}
 
 	.item1 { grid-area: 1 }
