@@ -1,10 +1,15 @@
-{var $title = "Foto a video tvfsdfsdůrce"}
+{var $title = "Foto a video tvůrce"}
 {var $back_btn = "Homepage:default"}
 {block content}
 <section>
 	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur vitae diam non enim vestibulum interdum. Aenean placerat. Mauris elementum mauris vitae tortor. Integer lacinia.</p>
-
 </section>
+
+	<div class="filtr-projects">
+		<h2>CO tě nejvíce zajímá?</h2>
+		<a n:class="($activeFilter===null)?active" n:href="Project:default">vše</a>
+		<a n:class="($activeFilter==$tag->url)?active" n:foreach="$tags as $tag" n:href="Project:default filter=>$tag->url">{$tag->name}</a>
+	</div>
 
 <div class="gallery grid-projects">
 	{foreach $projects as $project}

@@ -12,3 +12,6 @@ services:
 	- App\Models\TagModel
 	- App\Models\HomepageModel
 	- App\Services\Direr (%appDir%, %wwwDir%)
+
+
+

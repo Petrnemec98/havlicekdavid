@@ -1,22 +1,28 @@
+
 {var $title = $projectDetail->name}
 {var $back_btn = "Project:default"}
 {varType Nette\Database\Table\ActiveRow $projectDetail}
 {block content}
 
-<p>{$projectDetail->project_date | date:'d. m. Y'}</p>
-<p>{$projectDetail->description}</p>
-<p>
-	<span n:foreach="$projectDetail->related(project_has_tag) as $tag" n:class="tag-box, $projectDetail.$tag->tag->id">{$tag->tag->name}</span>
-</p>
+<div class="project-detail-info">
+	<p>{$projectDetail->project_date | date:'d. m. Y'}</p>
+	<p>{$projectDetail->description}</p>
+</div>
 
 
 <div class="gallery-detail">
-	{foreach $projectDetail->related(image) as $image}
-		<a href="{$basePath}/image/projects/{$projectDetail->id}/jpg/{$image->id}.jpg" data-lightbox="roadtrip"><img src="{$basePath}/image/projects/{$projectDetail->id}/webp/{$image->id}.webp"></a>
-	{/foreach}
+	<div class="gallery-row">
+		{foreach $projectDetail->related(image) as $image}
+			<div class="gallery-item">
+				<a href="{$basePath}/image/projects/{$projectDetail->id}/jpg/{$image->id}.jpg" data-lightbox="roadtrip">
+					<img src="{$basePath}/image/projects/{$projectDetail->id}/webp/{$image->id}.webp">
+				</a>
+			</div>
+		{/foreach}
+	</div>
 </div>
 
-<div>
+<div class="video-box">
 	{$projectDetail->mediabox|noescape}
 </div>
 
@@ -24,3 +30,5 @@
 
 
 <a n:href=":edit, id =>$projectDetail->id">upravit form</a>
+
+

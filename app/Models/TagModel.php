@@ -17,4 +17,8 @@ class TagModel{
 		return $this->db->table('tag')->fetchPairs("id", "name");
 	}
 
+	public function getAllTags(){
+		return $this->db->table('tag');
+	}
+
 }

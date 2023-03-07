@@ -30,8 +30,12 @@ class ProjectModel
 	}
 
 
-	public function getVisibleProjects() {
-		return $this->db->table("project")->order("order DESC, id DESC")->where("visible = 1");
+	public function getVisibleProjects($filter=null) {
+		$query= $this->db->table("project")->order("order DESC, id DESC")->where("visible = 1");
+		if($filter){
+			return $query->where(":project_has_tag.tag.url", $filter);
+		}
+		return $query;
 	}
 
 

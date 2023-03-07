@@ -47,10 +47,11 @@ final class ContactPresenter extends Nette\Application\UI\Presenter
 		$values = $form->getValues();
 
 		$mail = new Message;
-		$mail->setFrom($values->email, $values->name)
+		$mail->setFrom('noreply@havlicekdavid.cz')//musí být nějkaá defaul odesílací adresa (info@davidhavlice.cz)
+			->setReturnPath($values->email)
 			->addTo('petr.nemec.1998@gmail.com')
 			->setSubject('New message from website')
-			->setBody("Name: $values->name\nEmail: $values->email\nMessage: $values->message");
+			->setBody("Name: $values->name\nEmail: $values->email\nMessage: $values->message"); //musím přidat replay to
 
 		$mailer = new SendmailMailer;
 		$mailer->send($mail);

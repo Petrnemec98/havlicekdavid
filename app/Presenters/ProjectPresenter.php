@@ -16,8 +16,10 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 		$this->template->projectDetail = $this->projectModel->getProjectByUrl($projecturl);
 	}
 
-	public function renderDefault(){
-		$this->template->projects = $this->projectModel->getVisibleProjects();
+	public function renderDefault($filter=null){
+		$this->template->projects = $this->projectModel->getVisibleProjects($filter);
+		$this->template->tags = $this->tagModel->getAllTags();
+		$this->template->activeFilter = $filter;
 	}
 
 	public function renderCreate(){
@@ -31,10 +33,11 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 			->setHtmlAttribute("class", "input input-title")
 			->setHtmlAttribute("placeholder", "Název projektu");
 		$form->addText("project_date", "")
+			->setHtmlAttribute("placeholder", "Název projektu")
 			->setHtmlType("date")
 			->setRequired()
-			->setHtmlAttribute("class", "input input-title")
-			->setHtmlAttribute("placeholder", "Datum");
+			->setHtmlAttribute("class", "input input-title");
+
 
 		$form->addSubmit("send", "Vytvořit")
 			->setHtmlAttribute("class", "center-button main-btn");
