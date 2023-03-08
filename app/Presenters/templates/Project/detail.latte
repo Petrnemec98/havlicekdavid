@@ -22,6 +22,26 @@
 	</div>
 </div>
 
+<script>
+	// Inicializujte Bricks.js knihovnu
+	var gallery = Bricks({
+		container: '.gallery-row',
+		packed: 'data-packed',
+		sizes: [
+			{ columns: 1, gutter: 10 },
+			{ mq: '768px', columns: 2, gutter: 10 },
+			{ mq: '1024px', columns: 3, gutter: 10 }
+		],
+		position: true
+	});
+
+	// Počkejte na načtení obrázků
+	imagesLoaded(document.querySelector('.gallery-row'), function () {
+		// Spusťte balíčkování
+		gallery.pack();
+	});
+</script>
+
 <div class="video-box">
 	{$projectDetail->mediabox|noescape}
 </div>
