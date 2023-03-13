@@ -5,11 +5,10 @@
 		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur vitae diam non enim vestibulum interdum. Aenean placerat. Mauris elementum mauris vitae tortor. Integer lacinia.</p>
 </section>
 
-<section>
-	<a n:href="Contact:default" class="center-button main-btn contact-btn">Mám zájem o fotky nebo video</a>
-</section>
-
 <section class="gallery grid-homepage">
+	<div class="homepage-btn">
+		<a n:href="Project:default" class="center-button main-btn all-project-btn">Další projekty</a>
+	</div>
 	{foreach $projects as $project}
 	<a n:href="Project:detail projecturl=>$project->project->url" n:class="item.$project->id">
 		<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->project->id}/{$project->image_format}.jpg');" n:class="project, $project->image_format">
@@ -43,5 +42,5 @@
 	</a>
 </section>
 
-	<a n:href="Project:default" class="center-button main-btn all-project-btn">Zobrazit všechny projekty</a>
+
 

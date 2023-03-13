@@ -10,37 +10,19 @@
 </div>
 
 
-<div class="gallery-detail">
-	<div class="gallery-row">
+
+	<div id="animated-thumbnails-gallery">
 		{foreach $projectDetail->related(image) as $image}
-			<div class="gallery-item">
-				<a href="{$basePath}/image/projects/{$projectDetail->id}/jpg/{$image->id}.jpg" data-lightbox="roadtrip">
+				<a data-lightbox="project" href="{$basePath}/image/projects/{$projectDetail->id}/jpg/{$image->id}.jpg">
 					<img src="{$basePath}/image/projects/{$projectDetail->id}/webp/{$image->id}.webp">
 				</a>
-			</div>
 		{/foreach}
 	</div>
-</div>
 
-<script>
-	// Inicializujte Bricks.js knihovnu
-	var gallery = Bricks({
-		container: '.gallery-row',
-		packed: 'data-packed',
-		sizes: [
-			{ columns: 1, gutter: 10 },
-			{ mq: '768px', columns: 2, gutter: 10 },
-			{ mq: '1024px', columns: 3, gutter: 10 }
-		],
-		position: true
-	});
 
-	// Počkejte na načtení obrázků
-	imagesLoaded(document.querySelector('.gallery-row'), function () {
-		// Spusťte balíčkování
-		gallery.pack();
-	});
-</script>
+
+
+
 
 <div class="video-box">
 	{$projectDetail->mediabox|noescape}

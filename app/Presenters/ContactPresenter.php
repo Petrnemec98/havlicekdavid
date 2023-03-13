@@ -20,7 +20,7 @@ final class ContactPresenter extends Nette\Application\UI\Presenter
 		return $form;
 	}
 
-	private function createForm()
+	public function createForm()
 	{
 		$form = new Form;
 

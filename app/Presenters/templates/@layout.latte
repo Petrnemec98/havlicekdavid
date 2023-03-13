@@ -4,15 +4,25 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
-	<link rel="stylesheet" href="{$basePath}/assets/css/lightbox.css">
 	<link rel="stylesheet" href="{$basePath}/assets/css/main.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bricks.js/1.4.0/bricks.min.js"></script>
-	<script src="{$basePath}/assets/js/main.js" defer></script>
+	<link rel="stylesheet" href="{$basePath}/assets/css/lightbox.css">
+	<link rel="stylesheet" href="{$basePath}/modules/justifiedGallery.min/justifiedGallery.min.css">
+
+	<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+			integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+	/>
 
 	<title>{$title} | David Havlíček</title>
 </head>
 
 <body>
+
+
+
 {if !$presenter->isLinkCurrent('Homepage:default')}
 	<div class="btn-back">
 		<a n:href="{$back_btn}">
@@ -22,12 +32,51 @@
 {/if}
 <div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
 	<header class="max-width">
-		<aside><p>David Havliček</p></aside>
+		<aside><a n:href="Homepage:default">David Havliček</a></aside>
 		<h1>{$title}</h1>
 	</header>
 <div class="max-width block-center flex-box">
 	{include content}
 </div>
+
+<div class="floating-contact-form">
+	<div class="form-container">
+		<h3>Pojďme se domluvit</h3>
+
+		<form action="#">
+			<div class="field-container">
+				<i class="fas fa-signature"></i>
+				<label for="name">Jméno</label>
+				<input class="form-input" type="text" id="name" />
+			</div>
+
+			<div class="field-container">
+				<i class="fas fa-envelope"></i>
+				<label for="email">Email</label>
+				<input class="form-input" type="text" id="email" />
+			</div>
+
+			<div class="field-container">
+				<i class="far fa-sticky-note"></i>
+				<label for="message">Zpráva</label>
+				<textarea
+						class="form-input"
+						id="message"
+						cols="30"
+						rows="10"
+				></textarea>
+			</div>
+
+			<input type="submit" value="Odeslat poptávku" />
+		</form>
+	</div>
+
+	<div class="contact-icon">
+		<i class="fa fa-comments"></i>
+		<p>Mám zájem</p>
+	</div>
+</div>
+
 
 <footer>
 	<div class="max-width block-center">
@@ -43,9 +92,10 @@
 	</div>
 
 </footer>
-
-	<script src="{$basePath}/assets/js/lightbox.js"></script>
-
+<script src="{$basePath}/assets/js/jQuery.js"></script>
+<script src="{$basePath}/modules/justifiedGallery.min/jquery.justifiedGallery.min.js"></script>
+<script src="{$basePath}/assets/js/lightbox.min.js"></script>
+<script src="{$basePath}/assets/js/main.js"></script>
 </body>
 
 </html>
