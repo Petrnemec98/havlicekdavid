@@ -1,8 +1,13 @@
 {var $title = "Foto a video tvůrce"}
 {var $back_btn = "Homepage:default"}
 {block content}
-<section>
+<section class="text-content">
 	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur vitae diam non enim vestibulum interdum. Aenean placerat. Mauris elementum mauris vitae tortor. Integer lacinia.</p>
+	{if $user->isLoggedIn()}
+		<div class="admin-btn">
+			<a n:href=":create">Vytvořit nový project</a>
+		</div>
+	{/if}
 </section>
 
 	<div class="filtr-projects">
@@ -14,8 +19,13 @@
 <div class="gallery grid-projects">
 	{foreach $projects as $project}
 
+
 		{var $format=($iterator->counter%4>=2)?"landscape":"square"}
-		<a n:href="Project:detail projecturl=>$project->url" n:class="item, $format">
+		<div n:class="$format">
+			{if $user->isLoggedIn()}
+				<span><a n:href=":edit, $project->id" n:class="admin-btn, project-admin-btn">Upravit projekt</a></span>
+			{/if}
+		<a n:href="Project:detail projecturl=>$project->url" n:class="item">
 			<div  style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/{$format}.jpg');" n:class="project, $format">
 				<div class="project-header">
 					<div class="tags-box">
@@ -26,15 +36,14 @@
 						<span class="date">{$project->project_date | date:'d. m. Y'}</span>
 						<h2 class="project-cover">{$project->name}</h2>
 					</div>
+
 					<div class="project-background"></div>
 				</div>
 			</div>
 		</a>
-
+		</div>
 	{/foreach}
 </div>
 
 
-	<a n:href=":create">Vytvořit novou stránku</a>
-	<a n:href=":edit">upravit form</a>
 {/block}

@@ -116,6 +116,7 @@ class ProjectModel
 		$this->db->table('project')->wherePrimary($id)->update($data);
 
 		//Používáme foreach pro, aby se dalo použít více tagů k jednomu projektu = doi více řádků
+		$this->db->table("project_has_tag")->where("project_id",$id)->delete();
 		foreach ($tags as $key => $value){
 			$this->db->table("project_has_tag")->insert([
 				"project_id" => $id,

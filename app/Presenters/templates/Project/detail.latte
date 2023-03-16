@@ -5,8 +5,16 @@
 {block content}
 
 <div class="project-detail-info">
-	<p>{$projectDetail->project_date | date:'d. m. Y'}</p>
+	<p><i class="fa-regular fa-calendar"></i> {$projectDetail->project_date | date:'d. m. Y'} <i class="fa-solid fa-tags"></i> <span n:foreach="$projectDetail->related(project_has_tag) as $tag" n:class="tag-box, projectDetail.$tag->tag->id">{$tag->tag->name}</span></p>
+<section class="text-content">
 	<p>{$projectDetail->description}</p>
+	{if $user->isLoggedIn()}
+		<div class="admin-btn">
+			<a n:href=":edit, id =>$projectDetail->id">Upravit projekt</a>
+		</div>
+	{/if}
+</section>
+
 </div>
 
 
@@ -28,9 +36,9 @@
 	{$projectDetail->mediabox|noescape}
 </div>
 
-<p>{$projectDetail->footer}</p>
+<section class="text-content last-text">
+	<p>{$projectDetail->footer}</p>
+</section>
 
-
-<a n:href=":edit, id =>$projectDetail->id">upravit form</a>
 
 

@@ -29,10 +29,6 @@ body.lb-disable-scrolling {
   height: auto;
   max-width: inherit;
   max-height: none;
-  border-radius: 3px;
-
-  /* Image border */
-  border: 4px solid white;
 }
 
 .lightbox a img {
@@ -45,7 +41,6 @@ body.lb-disable-scrolling {
   width: 250px;
   height: 250px;
   margin: 0 auto;
-  border-radius: 4px;
 
   /* Background color behind image.
      This is visible during transitions. */
@@ -161,6 +156,7 @@ body.lb-disable-scrolling {
   float: left;
   text-align: left;
   line-height: 1.1em;
+	visibility: hidden;
 }
 
 .lb-data .lb-caption {

@@ -7,6 +7,45 @@
 *{
 	text-decoration: none;
 }
+.login-form{
+	margin: 40px auto;
+}
+.form table{
+	max-width: 500px;
+}
+.form tbody{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+.form tr{
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(2, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+	width: 100%;
+}
+.form th,td{
+	display: block;
+	width: 100%;
+}
+.form td{
+	grid-area: 1 / 1 / 2 / 2;
+}
+.form td input{
+	width: 100%;
+	border: none;
+	border: var(--darkblue-color) 2px solid;
+	border-radius: 4px;
+	font-size: 2rem;
+	transition: var(--hover-speed);
+}
+
+.form th{
+	grid-area: 2 / 1 / 3 / 2;
+	text-align: left;
+}
 
 html{
 	--black-color:black;
@@ -179,10 +218,47 @@ body{
 }
 /*Flotting button*/
 
+/*select*/
+/* Barva popisků */
+label {
+	color: rgba(0, 0, 0, 0.87);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+}
+
+/* Barva a styl pro označení (focus) */
+select:focus {
+	border-color: #4285f4;
+	box-shadow: 0 0 0 0.2rem rgba(66, 133, 244, 0.25);
+}
+
+/* Barva pozadí pro dropdown list */
+select {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	color: rgba(0, 0, 0, 0.87);
+	font-size: 16px;
+	height: 40px;
+	padding: 8px;
+	width: 100%;
+}
+
+/* Styl pro option elementy */
+select option {
+	color: #757575;
+	font-size: 16px;
+	fon
+}
+
+/*select*/
 
 
-h1,h2, h3, h4, h5, h6, a, span, p, input{
+
+h1,h2, h3, h4, h5, h6, a, span, p, input, th, select option {
 	font-family: 'BebasNeue';
+	letter-spacing:1px;
 	margin-block-start: 0em;
 	margin-block-end: 0em;
 }
@@ -192,6 +268,27 @@ a{
 	font-size: 1rem;
 }
 
+.home-btn{
+	text-align: center;
+}
+.admin-btn{
+	width: fit-content;
+	position: relative;
+	padding: 10px;
+	margin: 20px auto;
+	background-color: var(--yellow-color);
+	border-radius: 4px;
+	opacity: 80%;
+	transition: var(--hover-speed);
+	z-index: 14;
+}
+.admin-btn:hover{
+	opacity: 100%;
+}
+.project-admin-btn{
+	position: absolute;
+	margin: 10px;
+}
 a:hover .project-background{
 	opacity: 50%;
 }
@@ -267,25 +364,54 @@ header{
 
 footer{
 	background-color: var(--black-color);
-	bottom: 0;
+	display: block;
+	position: relative;
 	width: 100%;
-	height: 300px;
+	bottom: 0px;
 }
-.footer-box p a{
-	color: var(--oragne-color);
-}
-.text-content{
-	max-width: 890px;
-	margin: auto;
+
+.footer-box{
+	padding: 20px 10px 40px ;
 }
 .footer-box p{
 	color: var(--white-color);
 	text-align:left;
-	max-width:33%;
+	max-width:40%;
+}
+.alert{
+	width: 200px;
+	background-color: var(--lighblue-color);
+	border-radius: 4px;
+	position: fixed;
+	top: 10px;
+	padding: 10px;
+	transform: translate(-50%, 50%);
+	left: 50%;
+}
+.footer-box h2{
+	padding-bottom: 10px;
+}
+
+.footer-box p a{
+	color: var(--oragne-color);
+}
+
+.text-content{
+	max-width: 720px;
+	margin: 20px auto 0px;
+	padding: 0px 30px;
+}
+.last-text{
+	margin-bottom: 20px;
+}
+.project-detail-info{
+	margin: 10px auto 20px;
 }
 
 
-.main-btn{
+
+
+.main-btn,input.button{
 	background-color: var(--darkblue-color);
 	opacity: 90%;
 	height: 45px;
@@ -298,7 +424,7 @@ footer{
 	text-decoration: none;
 	font-size: 1.23rem;
 }
-.main-btn:hover{
+.main-btn:hover,input.button:hover{
 	opacity: 100%;
 }
 
@@ -312,7 +438,7 @@ footer{
 /*GRID*/
 .gallery {
 	display: grid;
-	grid-gap: 20px;
+	grid-gap: 10px;
 	margin: var(--margin-photo-box);
 }
 
@@ -322,12 +448,13 @@ footer{
 
 .grid-homepage{
 	grid-template-columns: repeat(3, 1fr);
+	margin-left: 10px;
 }
 
 /*Grid-project*/
-.item.square { grid-column: span 1; }
+.square { grid-column: span 1; }
 
-.item.landscape { grid-column: span 2; }
+.landscape { grid-column: span 2; }
 
 /*Homepage grid */
 .item1 { grid-area: 2 / 1 / 3 / 3; }
@@ -347,15 +474,22 @@ footer{
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	grid-area: 1 / 1 / 2 / 4;
+	margin-top: 40px;
+	grid-area: 5 / 5 / 5 / 1;
 }
 .homepage-btn .center-button{
 	margin: 25px;
 }
-
+.homepage-btn p{
+	color: var(--white-color);
+	margin-left: 10px;
+}
+.homepage-btn i{
+	color: var(--white-color);
+}
 /*Fotky na výšku muí mít vždy jiné rozměry. 330x2+30*/
 .project.portrait{
-	height: 600px;
+	height: 590px;
 }
 
 
@@ -429,11 +563,7 @@ table{
 	margin: auto;
 	text-align: center;
 }
-input{
-	border: none;
-	border-bottom: var(--oragne-color) 2px solid;
-	font-size: 2rem;
-}
+
 form .main-btn{
 	margin: 35px auto;
 }
@@ -499,13 +629,22 @@ form .main-btn{
 .video-box iframe{
 	width: 100%;
 	height: 350px;
-	margin: var(--margin-photo-box);
+	margin:10px auto 20px;
+	border: none;
+}
+.video-box{
+	padding: 10px;
+	width: 100%;
 }
 
 .project-detail-info p{
 	margin: auto 30px;
 }
 
+.fa-tags{
+	color: var(--oragne-color);
+	margin-left: 10px;
+}
 
 
 @media only screen and (max-width: 720px) {
@@ -529,7 +668,7 @@ form .main-btn{
 		width: 100%;
 		display: flex;
 		justify-content: center;
-		grid-area: 1 / 1 / 2 / 3;
+		grid-area: 7 / 1 / 7 / 3;
 	}
 
 	.grid-projects{
@@ -546,6 +685,11 @@ form .main-btn{
 		margin-bottom: 5px;
 	}
 
+	.footer-box p{
+		color: var(--white-color);
+		text-align:left;
+		max-width:66%;
+	}
 
 	.project{
 		background-repeat: no-repeat;

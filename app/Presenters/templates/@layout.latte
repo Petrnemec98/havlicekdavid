@@ -30,9 +30,11 @@
 		</a>
 	</div>
 {/if}
-<div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
+<div  n:foreach="$flashes as $flash" n:class=" block-center, alert, 'alert-' . $flash->type">
+	<p>{$flash->message}</p>
+</div>
 	<header class="max-width">
-		<aside><a n:href="Homepage:default">David Havliček</a></aside>
+		<aside class="home-btn"><a n:href="Homepage:default">David Havliček</a></aside>
 		<h1>{$title}</h1>
 	</header>
 <div class="max-width block-center flex-box">
@@ -79,8 +81,7 @@
 
 
 <footer>
-	<div class="max-width block-center">
-		<section class="footer-box">
+		<section class="footer-box max-width block-center">
 			<h2>
 				David Havlíček
 			</h2>
@@ -88,9 +89,15 @@
 				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent dapibus. Maecenas lorem. Donec quis nibh at felis congue commodo. Donec vitae arcu. Donec quis nibh at felis congue commodo. Morbi scelerisque luctus velit. Maecenas sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos
 				<a n:href="About:default">Zobrazit více...</a>
 			</p>
-		</section>
-	</div>
 
+			<p>
+				{if $user->isLoggedIn()}
+					<li>
+						<a n:href="Admin:out">Odhlásit</a>
+					</li>
+				{/if}
+			</p>
+		</section>
 </footer>
 <script src="{$basePath}/assets/js/jQuery.js"></script>
 <script src="{$basePath}/modules/justifiedGallery.min/jquery.justifiedGallery.min.js"></script>

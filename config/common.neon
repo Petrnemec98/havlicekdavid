@@ -6,6 +6,9 @@ application:
 	mapping:
 		*: App\*Module\Presenters\*Presenter
 
+security:
+	users:
+		admin: secret  # user 'Admin', password 'secret'
 
 session:
 	expiration: 14 days

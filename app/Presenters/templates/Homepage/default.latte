@@ -2,13 +2,27 @@
 {block content}
 
 <section class="text-content">
-		<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur vitae diam non enim vestibulum interdum. Aenean placerat. Mauris elementum mauris vitae tortor. Integer lacinia.</p>
+	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur vitae diam non enim vestibulum interdum. Aenean placerat. Mauris elementum mauris vitae tortor. Integer lacinia.</p>
+
+		{if $user->isLoggedIn()}
+		<div class="admin-btn">
+			<a n:href="Homepage:edit">upravit homepage</a>
+		</div>
+		{/if}
+
+
 </section>
 
+
+
 <section class="gallery grid-homepage">
+
 	<div class="homepage-btn">
-		<a n:href="Project:default" class="center-button main-btn all-project-btn">Další projekty</a>
+		<a n:href="Project:default" class="center-button main-btn all-project-btn">
+			<i class="fa-solid fa-photo-film"></i>
+			<p>Další projekty</p></a>
 	</div>
+
 	{foreach $projects as $project}
 	<a n:href="Project:detail projecturl=>$project->project->url" n:class="item.$project->id">
 		<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->project->id}/{$project->image_format}.jpg');" n:class="project, $project->image_format">
@@ -41,6 +55,8 @@
 		</div>
 	</a>
 </section>
+
+
 
 
 

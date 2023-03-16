@@ -86,8 +86,10 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 		if(!$project){
 			$this->error("neexistuje");
 		}
+
 		$defaults = $project->toArray();
 		$defaults["project_date"] = $project->project_date->format("Y-m-d");
+		$defaults["tags"] = $project->related("tag")->fetchPairs("id", "id");
 		$this->getComponent('editForm')->setDefaults($defaults);
 	}
 }

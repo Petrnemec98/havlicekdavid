@@ -17,4 +17,15 @@ class HomepageModel
 	public function getHomepageProjects() {
 		return $this->db->table('homepage')->order('homepage.id DESC');
 	}
+
+	public function updateHomepage ($formdata){
+		$data = $formdata;
+
+		$this->db->table("homepage")->where("id","project_id")->delete();
+
+		for ($i=1;$i<=5;$i++){
+			$this->db->table("homepage")->where("id", $i)->update(["project_id" => $data[$i]]);
+		}
+	}
+
 }
