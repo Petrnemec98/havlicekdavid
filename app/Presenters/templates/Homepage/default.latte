@@ -1,15 +1,17 @@
-{var $title = "Foto a video tvůrce"}
+{var $title = 'Foto a video tvůrce'}
+{var $heading = 'Foto a video <span class="text-bg-purpel">tvůrce</span>'}
+{var $description = ''}
+{var $keywords = ''}
 {block content}
 
 <section class="text-content">
-	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Curabitur vitae diam non enim vestibulum interdum. Aenean placerat. Mauris elementum mauris vitae tortor. Integer lacinia.</p>
+	<p>Přestaňte se bát, že vám nějaký moment unikne? <span class="text-orange">já ho pro vás zachytím!</span></p>
 
 		{if $user->isLoggedIn()}
 		<div class="admin-btn">
 			<a n:href="Homepage:edit">upravit homepage</a>
 		</div>
 		{/if}
-
 
 </section>
 
@@ -46,9 +48,6 @@
 			<div class="project-header">
 				<div class="header-content me">
 					<h2 class="project-cover">O MNĚ</h2>
-					<p>
-						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent dapibus. Maecenas lorem.consectetuer adipiscing elit. Praesent dapibus. Maecenas lorem.consectetuer adipiscing elit. Praesent dapibus. Maecenas lorem.
-					</p>
 					<span class="fake-btn">Zobrazit více</span>
 				</div>
 			</div>

@@ -4,6 +4,17 @@
 	font-style: normal;
 	src: url('../fonts/BebasNeue-Regular.ttf') format('opentype');
 }
+html{
+	--black-color:black;
+	--white-color:white;
+	--oragne-color:#FF6A3D;
+	--darkblue-color: #1A2238;
+	--lighblue-color: #9DAAF2;
+	--yellow-color: #F4DB7D;
+	--cover-bg-color:linear-gradient(9deg, rgba(0,0,0,1) 10%, rgba(255,255,255,0) 100%);
+	--hover-speed: all 0.3s 0s ease;
+	--margin-photo-box: 30px 0px;
+}
 *{
 	text-decoration: none;
 }
@@ -47,17 +58,7 @@
 	text-align: left;
 }
 
-html{
-	--black-color:black;
-	--white-color:white;
-	--oragne-color:#FF6A3D;
-	--darkblue-color: #1A2238;
-	--lighblue-color: #9DAAF2;
-	--yellow-color: #F4DB7D;
-	--cover-bg-color:linear-gradient(9deg, rgba(0,0,0,1) 10%, rgba(255,255,255,0) 100%);
-	--hover-speed: all 0.3s 0s ease;
-	--margin-photo-box: 50px 0px;
-}
+
 body{
 	margin: 0;
 }
@@ -263,6 +264,18 @@ h1,h2, h3, h4, h5, h6, a, span, p, input, th, select option {
 	margin-block-end: 0em;
 }
 
+.text-orange{
+	color: var(--oragne-color);
+}
+
+.text-bg-purpel{
+	display: inline-block;
+	background-color: var(--lighblue-color);
+	color: var(--white-color);
+	padding: 3px 8px;
+	border-radius: 4px;
+}
+
 a{
 	color: var(--darkblue-color);
 	font-size: 1rem;
@@ -346,7 +359,7 @@ h2{
 
 p{
 	color: var(--black-color);
-	font-size: 1rem;
+	font-size: 1.2rem;
 	text-align: center;
 }
 
@@ -474,7 +487,6 @@ footer{
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	margin-top: 40px;
 	grid-area: 5 / 5 / 5 / 1;
 }
 .homepage-btn .center-button{
@@ -522,7 +534,13 @@ footer{
 	z-index: 3;
 	position: relative;
 	height: 100%;
+
 }
+
+.project-header .fake-btn{
+	background-color: #f78a6a;
+	transition: var(--hover-speed);
+	}
 
 .project-background{
 	z-index: 1;
@@ -543,8 +561,19 @@ footer{
 }
 .header-content.me{
 	height: 100%;
+	width: 100%;
 	bottom: none;
 	margin-left: 0px;
+}
+.header-content.me .fake-btn{
+	position: absolute;
+	bottom: 0;
+	margin: auto;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.project-header:hover .fake-btn{
+	background-color: var(--oragne-color);
 }
 
 .header-content span{
@@ -644,6 +673,10 @@ form .main-btn{
 .fa-tags{
 	color: var(--oragne-color);
 	margin-left: 10px;
+}
+
+.fa-calendar{
+	color: var(--oragne-color);
 }
 
 

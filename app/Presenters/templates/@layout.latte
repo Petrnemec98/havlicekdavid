@@ -2,26 +2,35 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>{$title} | David Havlíček</title>
+	<meta name="description" content="{$description}">
+	<meta name="keywords" content="{$keywords}">
+	<meta name="author" content="Petr Němec">
+	<meta name="robots" content="index, follow">
+
+	<link rel="canonical" href="https://havlicekdavid.cz/www/index.php">
 
 	<link rel="stylesheet" href="{$basePath}/assets/css/main.css">
 	<link rel="stylesheet" href="{$basePath}/assets/css/lightbox.css">
 	<link rel="stylesheet" href="{$basePath}/modules/justifiedGallery.min/justifiedGallery.min.css">
 
-	<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-			integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-			crossorigin="anonymous"
-			referrerpolicy="no-referrer"
-	/>
+	<link rel="apple-touch-icon" sizes="180x180" href="{$basePath}/assets/images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="{$basePath}/assets/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="{$basePath}/assets/images/favicon-16x16.png">
+	<link rel="manifest" href="{$basePath}/assets/images/site.webmanifest">
+	<link rel="mask-icon" href="{$basePath}/assets/images/safari-pinned-tab.svg" color="#5bbad5">
+	<link rel="shortcut icon" href="{$basePath}/assets/images/favicon.ico">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-config" content="{$basePath}/assets/images/browserconfig.xml">
+	<meta name="theme-color" content="#ffffff">
 
-		<title>{$title} | David Havlíček</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
 </head>
 
 <body>
-
-
 
 {if !$presenter->isLinkCurrent('Homepage:default')}
 	<div class="btn-back">
@@ -35,7 +44,7 @@
 </div>
 	<header class="max-width">
 		<aside class="home-btn"><a n:href="Homepage:default">David Havliček</a></aside>
-		<h1>{$title}</h1>
+		<h1>{$heading|noescape}</h1>
 	</header>
 <div class="max-width block-center flex-box">
 	{include content}
