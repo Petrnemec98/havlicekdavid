@@ -1,0 +1,44 @@
+<!--Kontaktní formulář-->
+
+<div class="floating-contact-form">
+	<div class="form-container" n:snippet="content">
+		<h3>Pojďme se domluvit</h3>
+        
+		<form n:name="cForm" class="ajax" n:if="$showForm">
+			<div class="field-container">
+				<i class="fas fa-signature"></i>
+
+				<label n:name="name">Jméno</label>
+				<input n:name="name" class="form-input" type="text" id="name" />
+			</div>
+
+			<div class="field-container">
+				<i class="fas fa-envelope"></i>
+				<label n:name="email">E-mail</label>
+				<input n:name="email" class="form-input" type="text" id="email" />
+			</div>
+
+			<div class="field-container">
+				<i class="far fa-sticky-note"></i>
+				<label n:name="message">Zpráva</label>
+				<textarea
+                        n:name="message"
+						class="form-input"
+						id="message"
+						cols="30"
+						rows="10"
+				></textarea>
+			</div>
+
+			<input type="submit" value="Odeslat poptávku" />
+		</form>
+        <div id="thanks" n:if="$showThanks">
+            <p>Děkujeme vám za odeslání poptávky. Brzy se Vám ozveme a doladíme s vámi detaily.</p>
+        </div>
+	</div>
+
+	<div class="contact-icon">
+		<i class="fa fa-comments"></i>
+		<p>Mám zájem</p>
+	</div>
+</div>

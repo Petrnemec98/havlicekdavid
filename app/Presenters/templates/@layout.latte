@@ -41,45 +41,7 @@
 	{include content}
 </div>
 
-<!--Kontaktní formulář-->
-
-<div class="floating-contact-form">
-	<div class="form-container">
-		<h3>Pojďme se domluvit</h3>
-
-		<form action="#">
-			<div class="field-container">
-				<i class="fas fa-signature"></i>
-				<label for="name">Jméno</label>
-				<input class="form-input" type="text" id="name" />
-			</div>
-
-			<div class="field-container">
-				<i class="fas fa-envelope"></i>
-				<label for="email">Email</label>
-				<input class="form-input" type="text" id="email" />
-			</div>
-
-			<div class="field-container">
-				<i class="far fa-sticky-note"></i>
-				<label for="message">Zpráva</label>
-				<textarea
-						class="form-input"
-						id="message"
-						cols="30"
-						rows="10"
-				></textarea>
-			</div>
-
-			<input type="submit" value="Odeslat poptávku" />
-		</form>
-	</div>
-
-	<div class="contact-icon">
-		<i class="fa fa-comments"></i>
-		<p>Mám zájem</p>
-	</div>
-</div>
+{control contactForm}
 
 
 <footer>
@@ -103,8 +65,12 @@
 </footer>
 <script src="{$basePath}/assets/js/jQuery.js"></script>
 <script src="{$basePath}/modules/justifiedGallery.min/jquery.justifiedGallery.min.js"></script>
+<script src="https://unpkg.com/naja@2/dist/Naja.min.js"></script>
 <script src="{$basePath}/assets/js/lightbox.min.js"></script>
 <script src="{$basePath}/assets/js/main.js"></script>
+<script>
+  naja.initialize();
+</script>
 </body>
 
 </html>

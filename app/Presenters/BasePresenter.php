@@ -6,13 +6,16 @@ namespace App\Presenters;
 
 use Nette;
 use Nette\Application\UI\Control as ControlAlias;
-
+use App\Controls\ContactFormControl;
 
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
 	protected $projectModel;
 	protected $tagModel;
 	protected $homepageModel;
+
+	/** @var Nette\Mail\Mailer @inject */
+	public $mailer;
 
 	public function __construct(\App\Models\ProjectModel $projectModel, \App\Models\TagModel $tagModel, \App\Models\HomepageModel $homepageModel)
 	{
@@ -25,4 +28,13 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		//$renderer = $form->getRenderer();
 		//$renderer->wrappers['pair']['container']="div class=input-contain";
 	}
+
+	/**
+	 * 	Továrna pro vytvoření komponenty kontaktního formuláře
+	 *  @author wnc
+	 */
+	public function createComponentContactForm() {
+		return new ContactFormControl($this->mailer);
+	}
+
 }
