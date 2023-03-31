@@ -6,7 +6,6 @@ namespace App\Presenters;
 
 use Nette;
 use Nette\Application\UI\Form;
-use Nette\Application\UI\Presenter;
 
 
 final class ProjectPresenter extends \App\Presenters\BasePresenter

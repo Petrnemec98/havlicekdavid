@@ -22,32 +22,18 @@
 
 
 
-<<<<<<< HEAD
+
 <div id="animated-thumbnails-gallery">
 	{foreach $projectDetail->related(image)->order("order, id") as $image}
 		<div>
 			<a data-lightbox="project" href="{$basePath}/image/projects/{$projectDetail->id}/jpg/{$image->id}.jpg">
 				<img src="{$basePath}/image/projects/{$projectDetail->id}/webp/{$image->id}.webp">
 			</a>
-			{if $user->isLoggedIn()}
-				<form method="post" action="{link 'deleteImage!', ['id' => $image->id]}" onsubmit="return confirm('Opravdu chcete smazat tento obrázek?')">
-					<button class="test" type="submit" name="deleteImage">Smazat</button>
-				</form>
-			{/if}
 		</div>
 	{/foreach}
 </div>
 
 
-=======
-	<div id="animated-thumbnails-gallery">
-		{foreach $projectDetail->related(image) as $image}
-				<a data-lightbox="project" href="{$basePath}/image/projects/{$projectDetail->id}/jpg/{$image->id}.jpg">
-					<img src="{$basePath}/image/projects/{$projectDetail->id}/webp/{$image->id}.webp">
-				</a>
-		{/foreach}
-	</div>
->>>>>>> parent of 8276b94 (Footer + obr)
 
 
 
