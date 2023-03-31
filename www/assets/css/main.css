@@ -177,10 +177,11 @@ body{
 }
 
 .floating-contact-form .field-container label.active {
-	font-size: 13px;
+	font-size: 0.7rem;
 	background: var(--oragne-color);
 	color: #fff;
-	padding: 2px 16px;
+	padding: 2px 2px;
+	line-height: 1rem;
 	top: -8px;
 	left: 24px;
 	font-weight: bold;

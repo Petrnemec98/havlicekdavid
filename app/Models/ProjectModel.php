@@ -29,7 +29,6 @@ class ProjectModel
 		return $this->db->table("project")->order("order, id")->fetchAll();
 	}
 
-
 	public function getVisibleProjects($filter=null) {
 		$query= $this->db->table("project")->order("order DESC, id DESC")->where("visible = 1");
 		if($filter){
@@ -124,7 +123,6 @@ class ProjectModel
 			]);
 		}
 		$this->db->commit();
-
 	}
 
 	private function movePicture($pictureId, $direction) {
