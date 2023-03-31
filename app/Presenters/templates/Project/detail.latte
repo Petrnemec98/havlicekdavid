@@ -28,7 +28,7 @@
 			<div class="editArea" style="position: absolute; margin-top: 12px; margin-left: 2px" n:if="$user->isLoggedIn()">
 			   <a class="admin-btn btn-up ajax" data-naja-history="off" n:href="moveUp! $image->id"><i class="fa-solid fa-up-long"></i></a>
 			   <a class="admin-btn btn-down ajax" data-naja-history="off"  n:href="moveDown! $image->id"><i class="fa-solid fa-down-long"></i></a>
-			   <a class="admin-btn btn-trash ajax" data-naja-history="off"  n:href="remove! $image->id" onclick="return confirm('Opravdu smazat fotografii?')"><i class="fa-solid fa-trash"></i></a>
+			   <a class="admin-btn btn-trash ajax" data-naja-history="off"  n:href="remove! $image->id" data-confirm="Opravdu smazat fotografii?"><i class="fa-solid fa-trash"></i></a>
 			</div>
 		</div>
 </div>
