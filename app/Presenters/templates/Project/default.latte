@@ -20,34 +20,52 @@
 		<a n:class="($activeFilter==$tag->url)?active, ajax" n:foreach="$tags as $tag" n:href="Project:default filter=>$tag->url">{$tag->name}</a>
 	</div>
 
-<div class="gallery grid-projects" n:snippet="projects">
-	{foreach $projects as $project}
+	<div class="gallery grid-projects" n:snippet="projects">
+		{foreach $projects as $project}
 
 
-		{var $format=($iterator->counter%4>=2)?"landscape":"square"}
-		<div n:class="$format">
-			{if $user->isLoggedIn()}
-				<span><a n:href=":edit, $project->id" n:class="admin-btn, project-admin-btn">Upravit projekt</a></span>
-			{/if}
-		<a n:href="Project:detail projecturl=>$project->url" n:class="item">
-			<div  style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/{$format}.jpg');" n:class="project, $format">
-				<div class="project-header">
-					<div class="tags-box">
-						<span n:foreach="$project->related(project_has_tag) as $tag" n:class="tag-box, projekt.$tag->tag->id">{$tag->tag->name}</span>
+			{var $format=($iterator->counter%4>=2)?"landscape":"square"}
+			<div n:class="$format">
+				{if $user->isLoggedIn()}
+					<span><a n:href=":edit, $project->id" n:class="admin-btn, project-admin-btn">Upravit projekt</a></span>
+				{/if}
+				<a n:href="Project:detail projecturl=>$project->url" n:class="item">
+					<!--desktop content-->
+					<div  style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/{$format}.jpg');" n:class="project, desktop-mobil, $format">
+						<div class="project-header">
+							<div class="tags-box">
+								<span n:foreach="$project->related(project_has_tag) as $tag" n:class="tag-box, projekt.$tag->tag->id">{$tag->tag->name}</span>
+							</div>
+
+							<div class="header-content">
+								<span class="date">{$project->project_date | date:'d. m. Y'}</span>
+								<h2 class="project-cover">{$project->name}</h2>
+							</div>
+
+							<div class="project-background"></div>
+						</div>
 					</div>
 
-					<div class="header-content">
-						<span class="date">{$project->project_date | date:'d. m. Y'}</span>
-						<h2 class="project-cover">{$project->name}</h2>
-					</div>
+					<!--mobile content
+					- změna je ve formátu fotek použítýc na background-->
+					<div  style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/landscape.jpg');" n:class="project, mobile-project, $format">
+						<div class="project-header">
+							<div class="tags-box">
+								<span n:foreach="$project->related(project_has_tag) as $tag" n:class="tag-box, projekt.$tag->tag->id">{$tag->tag->name}</span>
+							</div>
 
-					<div class="project-background"></div>
-				</div>
+							<div class="header-content">
+								<span class="date">{$project->project_date | date:'d. m. Y'}</span>
+								<h2 class="project-cover">{$project->name}</h2>
+							</div>
+
+							<div class="project-background"></div>
+						</div>
+					</div>
+				</a>
 			</div>
-		</a>
-		</div>
-	{/foreach}
-</div>
+		{/foreach}
+	</div>
 
 
 {/block}
