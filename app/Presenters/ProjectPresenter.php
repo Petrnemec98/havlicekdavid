@@ -20,6 +20,8 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 		$this->template->projects = $this->projectModel->getVisibleProjects($filter);
 		$this->template->tags = $this->tagModel->getAllTags();
 		$this->template->activeFilter = $filter;
+		$this->redrawControl("filter");
+		$this->redrawControl("projects");
 	}
 
 	public function renderCreate(){

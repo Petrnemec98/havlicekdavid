@@ -14,13 +14,13 @@
 	{/if}
 </section>
 
-	<div class="filtr-projects">
+	<div class="filtr-projects" n:snippet="filter">
 		<h2>CO tě nejvíce zajímá?</h2>
-		<a n:class="($activeFilter===null)?active" n:href="Project:default">vše</a>
-		<a n:class="($activeFilter==$tag->url)?active" n:foreach="$tags as $tag" n:href="Project:default filter=>$tag->url">{$tag->name}</a>
+		<a n:class="($activeFilter===null)?active, ajax"  n:href="Project:default">vše</a>
+		<a n:class="($activeFilter==$tag->url)?active, ajax" n:foreach="$tags as $tag" n:href="Project:default filter=>$tag->url">{$tag->name}</a>
 	</div>
 
-<div class="gallery grid-projects">
+<div class="gallery grid-projects" n:snippet="projects">
 	{foreach $projects as $project}
 
 
