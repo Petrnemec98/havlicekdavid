@@ -4,7 +4,7 @@ namespace App\Presenters;
 use Nette;
 use Nette\Application\UI\Form;
 
-final class AdminPresenter extends Nette\Application\UI\Presenter
+final class AdminPresenter extends BasePresenter
 {
 	protected function createComponentSignInForm(): Form
 	{
