@@ -4,7 +4,11 @@ namespace App\Presenters;
 use Nette;
 use Nette\Application\UI\Form;
 
+<<<<<<< Updated upstream
 final class AdminPresenter extends BasePresenter
+=======
+final class AdminPresenter extends \App\Presenters\BasePresenter
+>>>>>>> Stashed changes
 {
 	protected function createComponentSignInForm(): Form
 	{

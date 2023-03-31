@@ -9,6 +9,18 @@
         <LatteTagSettings DeprecatedMessage="" MacroName="href" MacroType="PAIR">
           <option name="vendor" value="OTHER" />
         </LatteTagSettings>
+        <LatteTagSettings DeprecatedMessage="" MacroName="w" MacroType="PAIR">
+          <option name="vendor" value="OTHER" />
+        </LatteTagSettings>
+        <LatteTagSettings DeprecatedMessage="" MacroName="context" MacroType="PAIR">
+          <option name="vendor" value="OTHER" />
+        </LatteTagSettings>
+        <LatteTagSettings DeprecatedMessage="" MacroName="assign" MacroType="PAIR">
+          <option name="vendor" value="OTHER" />
+        </LatteTagSettings>
+        <LatteTagSettings DeprecatedMessage="" MacroName="data-project" MacroType="PAIR">
+          <option name="vendor" value="OTHER" />
+        </LatteTagSettings>
       </list>
     </customMacroSettings>
   </component>

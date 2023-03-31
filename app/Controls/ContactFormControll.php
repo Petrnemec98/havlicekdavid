@@ -21,7 +21,7 @@ class ContactFormControl extends Control {
 
     public function __construct($mailer) {
         $this->mailer = $mailer;
-    } 
+    }
 
     public function render () {
 
@@ -44,11 +44,11 @@ class ContactFormControl extends Control {
         $name = $data->name;
         $email = $data->email;
         $message = nl2br($data->message);
-        
+
         $mail = new Nette\Mail\Message;
 
         $mail->setFrom("$name <noreply@davidhlavicek.cz>")
-            ->addTo('david@davidhavlicek.cz')
+            ->addTo('petr.nemec.1998@gmail.com')
             ->addReplyTo("$email")
             ->setSubject('Poptávky z webu')
             ->setHTMLBody("<p>Uživatel $name ($email) odeslal tuto poptávku:</p> <p>$message</p>");
@@ -63,5 +63,5 @@ class ContactFormControl extends Control {
 
 
 
-    
+
 }
