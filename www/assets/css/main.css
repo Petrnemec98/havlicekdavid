@@ -10,6 +10,7 @@ html{
 	--oragne-color:#FF6A3D;
 	--light-orange-color: #f78a6a;
 	--darkblue-color: #1A2238;
+	--link-desc-color:#5378b0;
 	--lighblue-color: #9DAAF2;
 	--yellow-color: #F4DB7D;
 	--cover-bg-color:linear-gradient(9deg, rgba(0,0,0,1) 10%, rgba(255,255,255,0) 100%);
@@ -518,6 +519,10 @@ footer .social-box{
 	max-width: 720px;
 	margin: 20px auto 0px;
 	padding: 0px 30px;
+}
+.text-content a{
+	font-size: 1.2rem;
+	color: var(--link-desc-color);
 }
 .last-text{
 	margin-bottom: 20px;
