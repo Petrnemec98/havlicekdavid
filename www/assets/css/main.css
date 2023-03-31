@@ -278,6 +278,13 @@ h1,h2, h3, h4, h5, h6, a, span, p, input, th, select option {
 	border-radius: 4px;
 }
 
+.text-bg-yellow{
+	display: inline-block;
+	background-color: var(--yellow-color);
+	padding: 3px 8px;
+	border-radius: 4px;
+}
+
 a{
 	color: var(--darkblue-color);
 	font-size: 1rem;
@@ -628,7 +635,8 @@ footer .social-box{
 	background-color: var(--oragne-color);
 }
 .tag-box.projekt2{
-	background-color: var(--lighblue-color);
+	background-color: var(--yellow-color);
+	color: black;
 }
 
 .project-header{
