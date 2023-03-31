@@ -25,6 +25,7 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 	}
 
 	public function renderCreate(){
+		$this->protect();
 	}
 
 	public function createComponentProjectForm() :Form {
@@ -49,6 +50,7 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 	}
 
 	public function sendSuccessed(array $data) : void{
+		$this->protect();
 		$id = $this->projectModel->createNewProject($data);
 		$this->redirect(":edit", ['id' => $id]);
 	}
@@ -78,11 +80,13 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 	}
 
 	public function editFormSuccess($form, $data) : void{
+		$this->protect();
 		$this->projectModel->updateProject($data);
 		$this->redirect(":default");
 	}
 
 	public function renderEdit($id) :void{
+		$this->protect();
 		$this->template->projectDetail = $project = $this->projectModel->getProjectById($id);
 
 		if(!$project){
@@ -96,17 +100,19 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 	}
 
 	public function handleMoveUp($id) {
+		$this->protect();
 		$this->projectModel->movePictureUp($id);
-
 		$this->redrawControl("gallery");
 	}
 	
 	public function handleMoveDown($id) {
+		$this->protect();
 		$this->projectModel->movePictureDown($id);
 		$this->redrawControl("gallery");
 	}
 
 	public function handleRemove($id) {
+		$this->protect();
 		$this->projectModel->removePicture($id);
 		$this->redrawControl("gallery");
 	}

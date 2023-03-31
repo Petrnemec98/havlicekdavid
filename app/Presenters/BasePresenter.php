@@ -37,4 +37,11 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		return new ContactFormControl($this->mailer);
 	}
 
+	protected function protect() {
+		if (!$this->user->isLoggedIn()) {
+			$this->flashMessage("Nejste přihlášen. Prosím přihlašte se.");
+			$this->redirect("Admin:");
+		}
+	}
+
 }

@@ -35,11 +35,13 @@ final class HomepagePresenter extends \App\Presenters\BasePresenter
 	}
 
 	public function editFormSuccess($form, $data) : void{
+		$this->protect();
 		$this->homepageModel->updateHomepage($data);
 		$this->redirect(":default");
 	}
 
 	public function renderEdit() :void{
+		$this->protect();
 	}
 
 
