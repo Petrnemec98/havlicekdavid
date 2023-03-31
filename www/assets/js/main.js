@@ -1,10 +1,12 @@
-jQuery("#animated-thumbnails-gallery").justifiedGallery({
+jQuery(".animated-thumbnails-gallery").justifiedGallery({
 	captions: false,
 	lastRow: "nojustify",
 	rowHeight: 250,
 	maxRowHeight: 350,
 	margins: 7.5
 });
+
+
 
 const formInputs = document.querySelectorAll(
 	".floating-contact-form .form-container .form-input"
@@ -34,4 +36,18 @@ formInputs.forEach((i) => {
 			i.previousElementSibling.classList.remove("active");
 		}
 	});
+});
+
+
+naja.initialize();
+naja.snippetHandler.addEventListener('afterUpdate', (event) => {
+    if (event.detail.snippet.id === 'snippet--gallery') {
+        jQuery(".animated-thumbnails-gallery").justifiedGallery({
+			captions: false,
+			lastRow: "nojustify",
+			rowHeight: 250,
+			maxRowHeight: 350,
+			margins: 7.5
+		});
+    }
 });

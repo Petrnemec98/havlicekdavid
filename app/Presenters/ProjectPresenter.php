@@ -83,7 +83,7 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 	}
 
 	public function renderEdit($id) :void{
-		$project = $this->projectModel->getProjectById($id);
+		$this->template->projectDetail = $project = $this->projectModel->getProjectById($id);
 
 		if(!$project){
 			$this->error("neexistuje");
@@ -93,5 +93,21 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 		$defaults["project_date"] = $project->project_date->format("Y-m-d");
 		$defaults["tags"] = $project->related("tag")->fetchPairs("id", "id");
 		$this->getComponent('editForm')->setDefaults($defaults);
+	}
+
+	public function handleMoveUp($id) {
+		$this->projectModel->movePictureUp($id);
+
+		$this->redrawControl("gallery");
+	}
+	
+	public function handleMoveDown($id) {
+		$this->projectModel->movePictureDown($id);
+		$this->redrawControl("gallery");
+	}
+
+	public function handleRemove($id) {
+		$this->projectModel->removePicture($id);
+		$this->redrawControl("gallery");
 	}
 }

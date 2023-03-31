@@ -20,19 +20,19 @@
 
 </div>
 
+<div n:snippet="gallery" class="animated-thumbnails-gallery">
+		<div n:foreach="$projectDetail->related(image)->order('order, id') as $image" class="picture">
+			<a data-lightbox="project" href="{$basePath}/image/projects/{$projectDetail->id}/jpg/{$image->id}.jpg">
+				<img src="{$basePath}/image/projects/{$projectDetail->id}/webp/{$image->id}.webp">
+			</a>
+			<div class="editArea" style="position: absolute; margin-top: 12px; margin-left: 2px" n:if="$user->isLoggedIn()">
+			   <a class="admin-btn btn-up ajax" data-naja-history="off" n:href="moveUp! $image->id"><i class="fa-solid fa-up-long"></i></a>
+			   <a class="admin-btn btn-down ajax" data-naja-history="off"  n:href="moveDown! $image->id"><i class="fa-solid fa-down-long"></i></a>
+			   <a class="admin-btn btn-trash ajax" data-naja-history="off"  n:href="remove! $image->id" onclick="return confirm('Opravdu smazat fotografii?')"><i class="fa-solid fa-trash"></i></a>
 
-
-	<div id="animated-thumbnails-gallery">
-		{foreach $projectDetail->related(image) as $image}
-				<a data-lightbox="project" href="{$basePath}/image/projects/{$projectDetail->id}/jpg/{$image->id}.jpg">
-					<img src="{$basePath}/image/projects/{$projectDetail->id}/webp/{$image->id}.webp">
-				</a>
-		{/foreach}
-	</div>
-
-
-
-
+			</div>
+		</div>
+</div>
 
 
 <div class="video-box">

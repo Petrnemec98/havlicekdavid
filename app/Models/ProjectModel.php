@@ -127,4 +127,38 @@ class ProjectModel
 
 	}
 
+	private function movePicture($pictureId, $direction) {
+		$picture = $this->db->table("image")->wherePrimary($pictureId)->fetch();
+		$i = 1;
+		foreach ($this->db->table("image")->where("project_id", $picture->project_id)->order("order, id") as $row) {
+			if ($row->id == $pictureId) {
+				$row->update(["order" => $i + $direction]);
+			} else {
+				$row->update(["order" => $i]);
+			}
+		
+			$i+=2;
+		}
+
+		$i = 1;
+		foreach ($this->db->table("image")->where("project_id", $picture->project_id)->order("order, id") as $row) {
+			$row->update(["order" => $i]);
+			$i+=1;
+		}
+	}
+
+	public function movePictureUp($pictureId) {
+		$this->movePicture($pictureId, -3);
+	}
+
+	public function movePictureDown($pictureId) {
+		$this->movePicture($pictureId, 3);
+	}
+
+	public function removePicture($pictureId) {
+		$this->db->table("image")->wherePrimary($pictureId)->delete();
+
+	}
+
+
 }
