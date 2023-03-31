@@ -30,25 +30,7 @@
 				<span><a n:href=":edit, $project->id" n:class="admin-btn, project-admin-btn">Upravit projekt</a></span>
 			{/if}
 		<a n:href="Project:detail projecturl=>$project->url" n:class="item">
-			<!--desktop content-->
-			<div  style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/{$format}.jpg');" n:class="project, desktop-mobil, $format">
-				<div class="project-header">
-					<div class="tags-box">
-						<span n:foreach="$project->related(project_has_tag) as $tag" n:class="tag-box, projekt.$tag->tag->id">{$tag->tag->name}</span>
-					</div>
-
-					<div class="header-content">
-						<span class="date">{$project->project_date | date:'d. m. Y'}</span>
-						<h2 class="project-cover">{$project->name}</h2>
-					</div>
-
-					<div class="project-background"></div>
-				</div>
-			</div>
-
-		<!--mobile content
-		- změna je ve formátu fotek použítýc na background-->
-			<div  style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/landscape.jpg');" n:class="project, mobile-project, $format">
+			<div  style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/{$format}.jpg');" n:class="project, $format">
 				<div class="project-header">
 					<div class="tags-box">
 						<span n:foreach="$project->related(project_has_tag) as $tag" n:class="tag-box, projekt.$tag->tag->id">{$tag->tag->name}</span>

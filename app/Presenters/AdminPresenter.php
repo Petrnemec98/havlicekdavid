@@ -4,9 +4,13 @@ namespace App\Presenters;
 use Nette;
 use Nette\Application\UI\Form;
 
+<<<<<<< HEAD
 
 final class AdminPresenter extends BasePresenter
 
+=======
+final class AdminPresenter extends BasePresenter
+>>>>>>> parent of 8276b94 (Footer + obr)
 {
 	protected function createComponentSignInForm(): Form
 	{

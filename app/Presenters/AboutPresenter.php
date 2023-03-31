@@ -7,7 +7,7 @@ namespace App\Presenters;
 use Nette;
 
 
-final class AboutPresenter extends \App\Presenters\BasePresenter
+final class AboutPresenter extends Nette\Application\UI\Presenter
 {
 
 }

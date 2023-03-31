@@ -10,7 +10,7 @@
 <div class="project-detail-info">
 	<p><i class="fa-regular fa-calendar"></i> {$projectDetail->project_date | date:'d. m. Y'} <i class="fa-solid fa-tags"></i> <span n:foreach="$projectDetail->related(project_has_tag) as $tag" n:class="tag-box, projectDetail.$tag->tag->id">{$tag->tag->name}</span></p>
 <section class="text-content">
-	<p>{$projectDetail->description|noescape}</p>
+	<p>{$projectDetail->description}</p>
 	{if $user->isLoggedIn()}
 		<div class="admin-btn">
 			<a n:href=":edit, id =>$projectDetail->id">Upravit projekt</a>
@@ -22,6 +22,7 @@
 
 
 
+<<<<<<< HEAD
 <div id="animated-thumbnails-gallery">
 	{foreach $projectDetail->related(image)->order("order, id") as $image}
 		<div>
@@ -38,6 +39,15 @@
 </div>
 
 
+=======
+	<div id="animated-thumbnails-gallery">
+		{foreach $projectDetail->related(image) as $image}
+				<a data-lightbox="project" href="{$basePath}/image/projects/{$projectDetail->id}/jpg/{$image->id}.jpg">
+					<img src="{$basePath}/image/projects/{$projectDetail->id}/webp/{$image->id}.webp">
+				</a>
+		{/foreach}
+	</div>
+>>>>>>> parent of 8276b94 (Footer + obr)
 
 
 
