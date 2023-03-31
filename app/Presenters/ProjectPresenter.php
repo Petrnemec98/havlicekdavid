@@ -6,6 +6,7 @@ namespace App\Presenters;
 
 use Nette;
 use Nette\Application\UI\Form;
+use Nette\Application\UI\Presenter;
 
 
 final class ProjectPresenter extends \App\Presenters\BasePresenter
@@ -94,4 +95,5 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 		$defaults["tags"] = $project->related("tag")->fetchPairs("id", "id");
 		$this->getComponent('editForm')->setDefaults($defaults);
 	}
+	
 }
