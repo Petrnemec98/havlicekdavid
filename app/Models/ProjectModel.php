@@ -54,7 +54,7 @@ class ProjectModel
 
 		$image = Image::fromFile($image->temporaryFile);
 		$image->resize(null, 720);
-		$image->save("$dir/$format.jpg");
+		$image->save("$dir/$format.webp");
 	}
 
 	public function processGalleryImage($image, $projectId){
@@ -134,7 +134,7 @@ class ProjectModel
 			} else {
 				$row->update(["order" => $i]);
 			}
-		
+
 			$i+=2;
 		}
 

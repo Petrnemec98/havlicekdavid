@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,9 +59,9 @@
 			<h2>David Havlíček</h2>
 			<p>Mohu vám zaznamenat nejrůznější akce. Od zážitků z firemních teambuildingů, ukázku produktů pro podporu prodeje či prezentaci vaší firmy až po maturitní plesy a svatby <a n:href="About:default">Zobrazit více...</a></p>
 			<div class="social-box">
-				<a class="soc-1" href="mailto:dhavlicek@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-				<a class="soc-2" href="tel:+420607978857"><i class="fa-solid fa-phone"></i></a>
-				<a class="soc-3" target="_blank" href="https://www.instagram.com/davehavv/"><i class="fa-brands fa-instagram"></i></a>
+				<a class="soc-1" aria-label="Napište mi na emial." href="mailto:dhavlicek@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+				<a class="soc-2" aria-label="Zavolejte mi na telfoní číslo +420607978857" href="tel:+420607978857"><i class="fa-solid fa-phone"></i></a>
+				<a class="soc-3" aria-label="Podívej se na můj instagram." target="_blank" href="https://www.instagram.com/davehavv/"><i class="fa-brands fa-instagram"></i></a>
 			</div>
 			<p>
 				{if $user->isLoggedIn()}
@@ -70,14 +70,14 @@
 			</p>
 		</div>
 		<div class="footer-box">
-			<a href=""><h2><i class="fa-brands fa-instagram"></i> Sleduj moji další tvorbu... </h2></a>
+			<a href="https://www.instagram.com/davehavv/"><h2><i class="fa-brands fa-instagram"></i> Sleduj moji další tvorbu... </h2></a>
 			<div class="instagram-box">
-				<a href="https://www.instagram.com/p/CFKTFcClONi/" alt="ig-karavan" target="_blank" class="ig-1"><img src="{$basePath}/image/instagram/1.webp"></a>
-				<a href="https://www.instagram.com/p/Cbsrd2grfHU/" alt="ig-car" target="_blank" class="ig-2"><img src="{$basePath}/image/instagram/2.webp"></a>
-				<a href="https://www.instagram.com/p/CQdzWHVlC4s/" alt="ig-wedding" target="_blank" class="ig-3"><img src="{$basePath}/image/instagram/3.webp"></a>
-				<a href="https://www.instagram.com/p/Cgm3wwzLkWH/" alt="ig-bird" target="_blank" class="ig-4"><img src="{$basePath}/image/instagram/4.webp"></a>
-				<a href="https://www.instagram.com/p/CkNhLYNtLwb/" alt="ig-dog" target="_blank" class="ig-5"><img src="{$basePath}/image/instagram/5.webp"></a>
-				<a href="https://www.instagram.com/p/CprwEoVtoTz/" alt="ig-star" target="_blank" class="ig-6"><img src="{$basePath}/image/instagram/6.webp"></a>
+				<a href="https://www.instagram.com/p/CFKTFcClONi/" target="_blank" aria-label="Instagramový obrázek 1." class="ig-1"><img alt="ig-karavan" src="{$basePath}/image/instagram/1.webp"></a>
+				<a href="https://www.instagram.com/p/Cbsrd2grfHU/" target="_blank" aria-label="Instagramový obrázek 2." class="ig-2"><img alt="ig-car" src="{$basePath}/image/instagram/2.webp"></a>
+				<a href="https://www.instagram.com/p/CQdzWHVlC4s/" target="_blank" aria-label="Instagramový obrázek 3." class="ig-3"><img alt="ig-wedding" src="{$basePath}/image/instagram/3.webp"></a>
+				<a href="https://www.instagram.com/p/Cgm3wwzLkWH/" target="_blank" aria-label="Instagramový obrázek 4." class="ig-4"><img alt="ig-bird" src="{$basePath}/image/instagram/4.webp"></a>
+				<a href="https://www.instagram.com/p/CkNhLYNtLwb/" target="_blank" aria-label="Instagramový obrázek 5." class="ig-5"><img alt="ig-dog" src="{$basePath}/image/instagram/5.webp"></a>
+				<a href="https://www.instagram.com/p/CprwEoVtoTz/" target="_blank" aria-label="Instagramový obrázek 6." class="ig-6"><img alt="ig-star" src="{$basePath}/image/instagram/6.webp"></a>
 			</div>
 		</div>
 	</section>

@@ -27,7 +27,7 @@
 
 	{foreach $projects as $project}
 	<a n:href="Project:detail projecturl=>$project->project->url" n:class="item.$project->id">
-		<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->project->id}/{$project->image_format}.jpg');" n:class="project, $project->image_format">
+		<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->project->id}/{$project->image_format}.webp');" n:class="project, $project->image_format">
 			<div class="project-header">
 				<div class="tags-box">
 					<span n:foreach="$project->project->related(project_has_tag) as $tag" n:class="tag-box, projekt.$tag->tag->id">{$tag->tag->name}</span>
@@ -44,7 +44,7 @@
 	{/foreach}
 
 	<a n:href="About:default" n:class="item6">
-		<div style="background-image: url('{$basePath|noescape}/image/me/homepage.jpg');" n:class="project, square">
+		<div style="background-image: url('{$basePath|noescape}/image/me/homepage.webp');" n:class="project, square">
 			<div class="project-header">
 				<div class="header-content me">
 					<h2 class="project-cover">O MNĚ</h2>
