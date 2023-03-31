@@ -95,5 +95,5 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 		$defaults["tags"] = $project->related("tag")->fetchPairs("id", "id");
 		$this->getComponent('editForm')->setDefaults($defaults);
 	}
-	
+
 }

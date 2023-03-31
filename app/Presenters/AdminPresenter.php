@@ -5,9 +5,13 @@ use Nette;
 use Nette\Application\UI\Form;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 final class AdminPresenter extends BasePresenter
 
+=======
+final class AdminPresenter extends BasePresenter
+>>>>>>> parent of 8276b94 (Footer + obr)
 =======
 final class AdminPresenter extends BasePresenter
 >>>>>>> parent of 8276b94 (Footer + obr)
