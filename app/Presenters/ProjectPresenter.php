@@ -10,12 +10,17 @@ use Nette\Application\UI\Form;
 
 final class ProjectPresenter extends \App\Presenters\BasePresenter
 {
-
+	/**
+	 * Render project detail
+	 */
 	public function renderDetail($projecturl)
 	{
 		$this->template->projectDetail = $this->projectModel->getProjectByUrl($projecturl);
 	}
 
+	/**
+	 * Render list of projects - with AJAX filtering
+	 */
 	public function renderDefault($filter=null){
 		$this->template->projects = $this->projectModel->getVisibleProjects($filter);
 		$this->template->tags = $this->tagModel->getAllTags();
@@ -24,10 +29,34 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 		$this->redrawControl("projects");
 	}
 
+	/**
+	 * Render create new project view
+	 */
 	public function renderCreate(){
 		$this->protect();
 	}
 
+	/**
+	 * Render edit project view
+	 */
+	public function renderEdit($id) :void{
+		$this->protect();
+		$this->template->projectDetail = $project = $this->projectModel->getProjectById($id);
+
+		if(!$project){
+			$this->error("neexistuje");
+		}
+
+		$defaults = $project->toArray();
+		$defaults["project_date"] = $project->project_date->format("Y-m-d");
+		$defaults["tags"] = $project->related("tag")->fetchPairs("id", "id");
+		$this->getComponent('editForm')->setDefaults($defaults);
+	}
+
+	/** Factory for creating project form
+	 * 
+	 * @return Nette\Application\UI\Form
+	 */
 	public function createComponentProjectForm() :Form {
 		$form = new Form;
 
@@ -44,17 +73,16 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 
 		$form->addSubmit("send", "Vytvořit")
 			->setHtmlAttribute("class", "center-button main-btn");
-		$form->onSuccess[]=[$this, "sendSuccessed"];
+		$form->onSuccess[]=[$this, "addFormSuccess"];
 
 		return $form;
 	}
 
-	public function sendSuccessed(array $data) : void{
-		$this->protect();
-		$id = $this->projectModel->createNewProject($data);
-		$this->redirect(":edit", ['id' => $id]);
-	}
-
+	/** Factory for creating edit project form
+	 * 
+	 * @todo Tady by stálo za to obě továrničky sjednotit a parametrizovat
+	 * @return Nette\Application\UI\Form
+	 */
 	public function createComponentEditForm() :Form{
 		$form = new Form;
 
@@ -79,38 +107,46 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 		return $form;
 	}
 
-	public function editFormSuccess($form, $data) : void{
+	/** Callback for project add form success
+	 * @param array Array of values
+	 */
+	public function addFormSuccess(array $data) : void{
+		$this->protect();
+		$id = $this->projectModel->createNewProject($data);
+		$this->redirect(":edit", ['id' => $id]);
+	}
+
+	/** Callback for project edit form success
+	 * 
+	 * @param array Array of values
+	 */
+	public function editFormSuccess(array $data) : void{
 		$this->protect();
 		$this->projectModel->updateProject($data);
 		$this->redirect(":default");
 	}
 
-	public function renderEdit($id) :void{
-		$this->protect();
-		$this->template->projectDetail = $project = $this->projectModel->getProjectById($id);
-
-		if(!$project){
-			$this->error("neexistuje");
-		}
-
-		$defaults = $project->toArray();
-		$defaults["project_date"] = $project->project_date->format("Y-m-d");
-		$defaults["tags"] = $project->related("tag")->fetchPairs("id", "id");
-		$this->getComponent('editForm')->setDefaults($defaults);
-	}
-
+	/** Handler for moving picture order up
+	 * @param int  Id of picture
+	 */
 	public function handleMoveUp($id) {
 		$this->protect();
 		$this->projectModel->movePictureUp($id);
 		$this->redrawControl("gallery");
 	}
 	
+	/** Handler for moving picture order down
+	 * @param int  Id of picture
+	 */
 	public function handleMoveDown($id) {
 		$this->protect();
 		$this->projectModel->movePictureDown($id);
 		$this->redrawControl("gallery");
 	}
 
+	/** Handler for removing picture from project
+	 * @param int  Id of picture
+	 */
 	public function handleRemove($id) {
 		$this->protect();
 		$this->projectModel->removePicture($id);

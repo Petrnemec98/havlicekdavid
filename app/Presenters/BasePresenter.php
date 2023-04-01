@@ -5,18 +5,26 @@ declare(strict_types=1);
 namespace App\Presenters;
 
 use Nette;
-use Nette\Application\UI\Control as ControlAlias;
 use App\Controls\ContactFormControl;
 
 abstract class BasePresenter extends Nette\Application\UI\Presenter
 {
+	/** @var App\Models\ProjectModel  */
 	protected $projectModel;
+
+	/** @var App\Models\TagModel  */
 	protected $tagModel;
+
+	/** @var App\Models\HomepageModel  */
 	protected $homepageModel;
 
 	/** @var Nette\Mail\Mailer @inject */
 	public $mailer;
 
+	/**
+	 * Constructor for base presenter 
+	 * - used for model injection
+	 */
 	public function __construct(\App\Models\ProjectModel $projectModel, \App\Models\TagModel $tagModel, \App\Models\HomepageModel $homepageModel)
 	{
 		$this->projectModel = $projectModel;
@@ -24,19 +32,20 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		$this->homepageModel = $homepageModel;
 	}
 
-	public function setFormRenderer(Nette\Application\UI\Form $form){
-		//$renderer = $form->getRenderer();
-		//$renderer->wrappers['pair']['container']="div class=input-contain";
-	}
 
 	/**
-	 * 	Továrna pro vytvoření komponenty kontaktního formuláře
+	 * 	Contact form component factory
+	 * 
 	 *  @author wnc
+	 *  @return App\Controls\ContactFormControl
 	 */
 	public function createComponentContactForm() {
 		return new ContactFormControl($this->mailer);
 	}
 
+	/**
+	 * This function chcecks if the user loged-in. If not, redirects to log-in form and prevent next action.
+	 */
 	protected function protect() {
 		if (!$this->user->isLoggedIn()) {
 			$this->flashMessage("Nejste přihlášen. Prosím přihlašte se.");
