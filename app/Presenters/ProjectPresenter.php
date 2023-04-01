@@ -6,7 +6,7 @@ namespace App\Presenters;
 
 use Nette;
 use Nette\Application\UI\Form;
-
+use Nette\Utils\ArrayHash;
 
 final class ProjectPresenter extends \App\Presenters\BasePresenter
 {
@@ -114,9 +114,9 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 	}
 
 	/** Callback for project add form success
-	 * @param array Array of values
+	 * @param ArrayHash Array of values
 	 */
-	public function addFormSuccess(array $data) : void{
+	public function addFormSuccess(ArrayHash $data) : void{
 		$this->protect();
 		$id = $this->projectModel->createNewProject($data);
 		$this->redirect(":edit", ['id' => $id]);
@@ -124,9 +124,9 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 
 	/** Callback for project edit form success
 	 * 
-	 * @param array Array of values
+	 * @param ArrayHash Array of values
 	 */
-	public function editFormSuccess(array $data) : void{
+	public function editFormSuccess(ArrayHash $data) : void{
 		$this->protect();
 		$this->projectModel->updateProject($data);
 		$this->redirect(":default");

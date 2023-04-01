@@ -53,4 +53,13 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
 		}
 	}
 
+	/**
+	 * Before render lifecycle step. Assign default values of SEO variables
+	 */
+	public function beforeRender() {
+		$this->template->description = "";
+		$this->template->keywords = "";
+		$this->template->heading = "";
+	}
+
 }
