@@ -7,28 +7,55 @@ namespace App\Models;
 use Nette;
 use Nette\Utils\Strings;
 use Nette\Utils\Image;
+use Nette\Database\Explorer;
+use App\Services\Direr;
+
 
 class ProjectModel
 {
+	/** @var Nette\Database\Explorer Database Instance */
 	private $db;
+
+	/** @var App\Services\Direr Direr service instance */
 	private $dir;
-	public function __construct(\Nette\Database\Explorer $db, \App\Services\Direr $dir){
+
+	/**
+	 * Model constructor - for injecting database instance (DI)
+	 * 
+	 * @param Nette\Database\Explorer $db Database instance
+	 * @param App\Services\Direr $dir Direr instance
+	 */
+	public function __construct(Explorer $db, Direr $dir){
 		$this->db = $db;
 		$this->dir = $dir;
 	}
 
+	/**
+	 * Gets project data from database by project url
+	 * 
+	 * @param string $url URL fragment
+	 * @return Nette\Database\Table\ActiveRow
+	 */
 	public function getProjectByUrl($url){
 		return $this->db->table('project')->where('url',$url)->fetch();
 	}
-
+	
+	/**
+	 * Gets project data from database by project id
+	 * 
+	 * @param int $id in project id
+	 * @return Nette\Database\Table\ActiveRow
+	 */
 	public function getProjectById($id){
 		return $this->db->table('project')->wherePrimary($id)->fetch();
 	}
 
-	public function getAllProjects() {
-		return $this->db->table("project")->order("order, id")->fetchAll();
-	}
-
+	/**
+	 * Get all visible projects data from database ordered by order field. Can be filtered by tags.
+	 * 
+	 * @param null|string $filter If not null, projects are filtered by tag url
+	 * @return Nette\Database\Table\Selection
+	 */
 	public function getVisibleProjects($filter=null) {
 		$query= $this->db->table("project")->order("order DESC, id DESC")->where("visible = 1");
 		if($filter){
@@ -37,7 +64,12 @@ class ProjectModel
 		return $query;
 	}
 
-
+	/**
+	 * Creates new project record in database.
+	 * 
+	 * @param array associated array (key = field_name, value = value)
+	 * @return int inserted row id
+	 */
 	public function createNewProject($data){
 		$data["url"] = Strings::webalize($data["name"]);
 
@@ -46,8 +78,18 @@ class ProjectModel
 		$row = $this->db->table("project")->insert($data);
 		$this->db->commit();
 		return $row->id;
+
 	}
 
+	/**
+	 * Process uploaded image (project theme photo) in proper format 
+	 * 	- check and create folder 
+	 *  - resize and save webp thumbnail
+	 * 
+	 * @param  Nette\Http\FileUpload $image Image object form upload form
+	 * @param string $format theme format (landscape, square, portrait)
+	 * @param int $id Project ID
+	 */
 	public function processImage($image, $format, $projectId){
 		$dir = $this->dir->wwwDir."/image/projects/$projectId";
 		$this->makeFolder($dir);
@@ -57,10 +99,18 @@ class ProjectModel
 		$image->save("$dir/$format.webp");
 	}
 
+	/**
+	 * Process uploaded image (project gallery picture)  
+	 * 
+ 	 * 	- check and create folder 
+	 *  - resize and save webp thumbnail
+	 *  - resize and save target jpeg file
+	 * 
+	 * @param  Nette\Http\FileUpload $image Image object form upload form
+	 * @param int $id Project ID
+	 */
 	public function processGalleryImage($image, $projectId){
 		$dir = $this->dir->wwwDir."/image/projects/$projectId";
-
-
 		$imageId = $this->db->table("image")->insert([
 			"project_id"=> $projectId
 		]);
@@ -73,6 +123,12 @@ class ProjectModel
 		$image->save("$dir/webp/$imageId.webp");
 	}
 
+	/**
+	 * Creates a folder with the specified directory path if it does not already exist.
+	 * 
+	 * @param string $dir The directory path where the folder should be created.
+	 * @return bool Returns true upon success, otherwise an error will be thrown.
+	 */
 	private function makeFolder($dir){
 		if(!is_dir($dir)){
 			mkdir($dir,0777, true);
@@ -81,6 +137,13 @@ class ProjectModel
 
 	}
 
+	/**
+	 * Updates a project with new data, processes and stores images, and updates project tags.
+	 * 
+	 * @param Nette\Utils\ArrayHash $formdata An object containing the new data for the project.
+	 * @return void
+	 * @throws Exception If any database operation fails during the update process.
+	 */
 	public function updateProject($formdata){
 		$data = $formdata;
 		$tags=$data["tags"];
@@ -125,12 +188,19 @@ class ProjectModel
 		$this->db->commit();
 	}
 
+	/**
+	 * Moves a picture's position within a project's gallery in the specified direction.
+	 * 
+	 * @param int $pictureId The ID of the picture to move.
+	 * @param int $direction The direction in which to move the picture (-1 or 1).
+	 * @return void
+	*/
 	private function movePicture($pictureId, $direction) {
 		$picture = $this->db->table("image")->wherePrimary($pictureId)->fetch();
 		$i = 1;
 		foreach ($this->db->table("image")->where("project_id", $picture->project_id)->order("order, id") as $row) {
 			if ($row->id == $pictureId) {
-				$row->update(["order" => $i + $direction]);
+				$row->update(["order" => $i + ($direction*3)]);
 			} else {
 				$row->update(["order" => $i]);
 			}
@@ -145,18 +215,34 @@ class ProjectModel
 		}
 	}
 
+	/**
+	 * Moves a picture's position within a project's gallery in the direction up.
+	 * 
+	 * @param int $pictureId The ID of the picture to move.
+	 * @return void
+	*/
 	public function movePictureUp($pictureId) {
-		$this->movePicture($pictureId, -3);
+		$this->movePicture($pictureId, -1);
 	}
-
+	
+	/**
+	 * Moves a picture's position within a project's gallery in the direction down.
+	 * 
+	 * @param int $pictureId The ID of the picture to move.
+	 * @return void
+	*/
 	public function movePictureDown($pictureId) {
-		$this->movePicture($pictureId, 3);
+		$this->movePicture($pictureId, 1);
 	}
 
+	/**
+	 * Removes a picture from a project's gallery.
+	 * 
+	 * @param int $pictureId The ID of the picture to remove.
+	 * @return void
+	*/
 	public function removePicture($pictureId) {
 		$this->db->table("image")->wherePrimary($pictureId)->delete();
-
+		//TODO: We need also unlink the file
 	}
-
-
 }

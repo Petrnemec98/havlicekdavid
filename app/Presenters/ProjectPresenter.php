@@ -50,12 +50,18 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 		$defaults = $project->toArray();
 		$defaults["project_date"] = $project->project_date->format("Y-m-d");
 		$defaults["tags"] = $project->related("tag")->fetchPairs("id", "id");
-		$this->getComponent('editForm')->setDefaults($defaults);
+		
+		$form = $this->getComponent('editForm');
+		if ($form instanceof Form) {
+			$form->setDefaults($defaults);
+		}
+		
 	}
 
 	/** Factory for creating project form
 	 * 
 	 * @return Nette\Application\UI\Form
+	 * 
 	 */
 	public function createComponentProjectForm() :Form {
 		$form = new Form;
