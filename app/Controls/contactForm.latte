@@ -3,34 +3,35 @@
 <div class="floating-contact-form">
 	<div class="form-container" n:snippet="content">
 		<h3>Pojďme se domluvit</h3>
-        
+
 		<form n:name="cForm" class="ajax" n:if="$showForm">
 			<div class="field-container">
 				<i class="fas fa-signature"></i>
 
-				<label n:name="name">Jméno</label>
-				<input n:name="name" class="form-input" type="text" id="name" />
+				<label for="firstname" n:name="name">Jméno</label>
+				<input n:name="name" class="form-input" type="text" aria-labelledby="name" id="name" />
 			</div>
 
 			<div class="field-container">
 				<i class="fas fa-envelope"></i>
-				<label n:name="email">E-mail</label>
-				<input n:name="email" class="form-input" type="text" id="email" />
+				<label for="email" n:name="email">E-mail</label>
+				<input n:name="email" class="form-input" type="text" aria-labelledby="email" id="email" />
 			</div>
 
 			<div class="field-container">
 				<i class="far fa-sticky-note"></i>
-				<label n:name="message">Zpráva</label>
+				<label for="message" n:name="message">Zpráva</label>
 				<textarea
                         n:name="message"
 						class="form-input"
 						id="message"
 						cols="30"
 						rows="10"
+						aria-labelledby="message"
 				></textarea>
 			</div>
 
-			<input type="submit" value="Odeslat poptávku" />
+			<input aria-labelledby="sent" type="submit" value="Odeslat poptávku" />
 		</form>
         <div id="thanks" n:if="$showThanks">
             <p>Děkujeme vám za odeslání poptávky. Brzy se Vám ozveme a doladíme s vámi detaily.</p>
