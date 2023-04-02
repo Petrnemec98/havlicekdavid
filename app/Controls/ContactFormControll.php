@@ -48,7 +48,7 @@ class ContactFormControl extends Control {
         $mail = new Nette\Mail\Message;
 
         $mail->setFrom("$name <noreply@davidhlavicek.cz>")
-            ->addTo('dahavlicek@gmial.com')
+            ->addTo('dahavlicek@gmail.com')
             ->addReplyTo("$email")
             ->setSubject('Poptávky z webu')
             ->setHTMLBody("<p>Uživatel $name ($email) odeslal tuto poptávku:</p> <p>$message</p>");
