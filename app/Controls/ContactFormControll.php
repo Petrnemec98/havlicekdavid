@@ -32,6 +32,7 @@ class ContactFormControl extends Control {
 
     public function createComponentCForm() {
         $form = new Form();
+		$form->addText("subject", "Předmět");
         $form->addText("name", "Jméno");
         $form->addText("email", "E-mail");
         $form->addTextArea("message", "Zpráva");
@@ -43,15 +44,38 @@ class ContactFormControl extends Control {
     public function formSuccess($form, $data) {
         $name = $data->name;
         $email = $data->email;
+		$subject= $data->subject;
         $message = nl2br($data->message);
+		// Definujeme proměnnou pro stylizaci emailu
+		$emailStyle = 'style="font-family: Arial, sans-serif; font-size: 16px;"';
+
+// Vytvoříme proměnnou s HTML zprávou
+		$htmlBody = '
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>'.$subject.'</title>
+    </head>
+    <body '.$emailStyle.'>
+      <h1 style="color: #0066cc;">'.$subject.'</h1>
+      <p>Dobrý den,</p>
+      <p>Uživatel <strong>'.$name.'</strong> ('.$email.') odeslal tuto poptávku:</p>
+      <blockquote style="background-color: #f5f5f5; padding: 10px 20px; margin: 20px 0;">
+        <p style="font-style: italic; margin-bottom: 0;">'.$message.'</p>
+      </blockquote>
+      <p>S pozdravem,</p>
+      <p>Vaše webová aplikace</p>
+    </body>
+  </html>
+';
 
         $mail = new Nette\Mail\Message;
 
         $mail->setFrom("$name <noreply@davidhlavicek.cz>")
             ->addTo('dahavlicek@gmail.com')
             ->addReplyTo("$email")
-            ->setSubject('Poptávky z webu')
-            ->setHTMLBody("<p>Uživatel $name ($email) odeslal tuto poptávku:</p> <p>$message</p>");
+            ->setSubject("$subject")
+            ->setHTMLBody($htmlBody);
         $this->mailer->send($mail);
 
         $this->showForm = false;

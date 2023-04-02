@@ -6,9 +6,14 @@
 
 		<form n:name="cForm" class="ajax" n:if="$showForm">
 			<div class="field-container">
-				<i class="fas fa-signature"></i>
+				<i class="far fa-sticky-note"></i>
+				<label for="subject" n:name="subject">Předmět</label>
+				<input n:name="subject" class="form-input" type="text" aria-labelledby="subject" id="name" />
+			</div>
 
-				<label for="firstname" n:name="name">Jméno</label>
+			<div class="field-container">
+				<i class="fas fa-signature"></i>
+				<label for="name" n:name="name">Jméno</label>
 				<input n:name="name" class="form-input" type="text" aria-labelledby="name" id="name" />
 			</div>
 
