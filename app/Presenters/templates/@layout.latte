@@ -57,11 +57,29 @@
 	<section class="max-width block-center">
 		<div class="footer-box about">
 			<h2>David Havlíček</h2>
-			<p>Mohu vám zaznamenat nejrůznější akce. Od zážitků z firemních teambuildingů, ukázku produktů pro podporu prodeje či prezentaci vaší firmy až po maturitní plesy a svatby <a n:href="About:default">Zobrazit více...</a></p>
+			<p>Mohu vám zaznamenat nejrůznější akce. Od zážitků z firemních teambuildingů, ukázku produktů pro podporu prodeje či prezentaci vaší firmy až po maturitní plesy a svatby <a n:href="About:default">Zjistit více...</a></p>
 			<div class="social-box">
-				<a class="soc-1" aria-label="Napište mi na emial." href="mailto:dhavlicek@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-				<a class="soc-2" aria-label="Zavolejte mi na telfoní číslo +420607978857" href="tel:+420607978857"><i class="fa-solid fa-phone"></i></a>
-				<a class="soc-3" aria-label="Podívej se na můj instagram." target="_blank" href="https://www.instagram.com/davehavv/"><i class="fa-brands fa-instagram"></i></a>
+				<a class="soc-1" aria-label="Napište mi na emial." href="mailto:dhavlicek@gmail.com">
+					<i class="icon">
+						<svg>
+							<use class="h2-icon" xlink:href="{$basePath}/assets/images/email.svg#email"></use>
+						</svg>
+					</i>
+				</a>
+				<a class="soc-2" aria-label="Zavolejte mi na telfoní číslo +420607978857" href="tel:+420607978857">
+					<i class="icon">
+						<svg>
+							<use class="h2-icon" xlink:href="{$basePath}/assets/images/call.svg#call"></use>
+						</svg>
+					</i>
+				</a>
+				<a class="soc-3" aria-label="Podívej se na můj instagram." target="_blank" href="https://www.instagram.com/davehavv/">
+					<i class="icon">
+						<svg>
+							<use class="h2-icon" xlink:href="{$basePath}/assets/images/instagram.svg#instagram"></use>
+						</svg>
+					</i>
+				</a>
 			</div>
 			<p>
 				{if $user->isLoggedIn()}
@@ -70,7 +88,16 @@
 			</p>
 		</div>
 		<div class="footer-box">
-			<a href="https://www.instagram.com/davehavv/"><h2><i class="fa-brands fa-instagram"></i> Sleduj moji další tvorbu... </h2></a>
+			<a href="https://www.instagram.com/davehavv/">
+				<h2>
+					<i class="icon">
+						<svg>
+							<use class="h2-icon" xlink:href="{$basePath}/assets/images/instagram.svg#instagram"></use>
+						</svg>
+					</i>
+					Sledujte moji další tvorbu...
+				</h2>
+			</a>
 			<div class="instagram-box">
 				<a href="https://www.instagram.com/p/CFKTFcClONi/" target="_blank" aria-label="Instagramový obrázek 1." class="ig-1"><img alt="ig-karavan" src="{$basePath}/image/instagram/1.webp"></a>
 				<a href="https://www.instagram.com/p/Cbsrd2grfHU/" target="_blank" aria-label="Instagramový obrázek 2." class="ig-5"><img alt="ig-car" src="{$basePath}/image/instagram/2.webp"></a>

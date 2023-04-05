@@ -3,6 +3,7 @@
 	font-weight: 400;
 	font-style: normal;
 	src: url('../fonts/BebasNeue-Regular.ttf') format('opentype');
+	font-display: swap;
 }
 html{
 	--black-color:black;
@@ -20,6 +21,24 @@ html{
 *{
 	text-decoration: none;
 }
+
+/*Ikony*/
+a .icon, h2 .icon{
+	display: inline-block;
+	height: 1.5rem;
+	width: 1.5rem;
+}
+
+.icon svg {
+	width: 100%;
+	height: 100%;
+	fill:var(--oragne-color);
+	transition: var(--hover-speed);
+}
+a:hover .icon svg{
+	opacity: 80%;
+}
+
 .login-form{
 	margin: 40px auto;
 }
@@ -85,7 +104,7 @@ body{
 }
 
 .floating-contact-form .contact-icon i {
-	font-size: 20px;
+	width: 1.5rem;
 	margin: 10px 8px;
 	color: var(--oragne-color);
 }
@@ -102,7 +121,7 @@ body{
 	right: 10px;
 	margin-left: 10px;
 	padding: 24px 36px;
-	font-family: "Roboto", sans-serif;
+	font-family:  sans-serif, "Roboto";
 	box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
 	border-radius: 24px;
 
@@ -434,6 +453,10 @@ footer .instagram-box{
 footer .instagram-box a img{
 	width: 100%;
 	max-width: 350px;
+	transition: var(--hover-speed);
+}
+footer .instagram-box a:hover img{
+	transform: scale(1.1);
 }
 
 footer .social-box{
@@ -656,6 +679,7 @@ footer .social-box{
 .project-header .fake-btn{
 	background-color: var(--light-orange-color);
 	transition: var(--hover-speed);
+	color:var(--black-color);
 }
 
 .project-background{
