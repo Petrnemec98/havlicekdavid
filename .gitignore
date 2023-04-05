@@ -1,3 +1,5 @@
 config/local.neon
 app/Presenters/AdminPresenter.php
 app/Presenters/AdminPresenter.php
+/www/node_modules/
+/www/image/

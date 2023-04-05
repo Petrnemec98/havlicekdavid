@@ -5,13 +5,15 @@
 	src: url('../fonts/BebasNeue-Regular.ttf') format('opentype');
 	font-display: swap;
 }
+
+
 html{
 	--black-color:black;
 	--white-color:white;
 	--oragne-color:#FF6A3D;
 	--light-orange-color: #f78a6a;
 	--darkblue-color: #1A2238;
-	--link-desc-color:#5378b0;
+	--link-desc-color:#3e5983;
 	--lighblue-color: #9DAAF2;
 	--yellow-color: #F4DB7D;
 	--cover-bg-color:linear-gradient(9deg, rgba(0,0,0,1) 10%, rgba(255,255,255,0) 100%);
@@ -21,6 +23,8 @@ html{
 *{
 	text-decoration: none;
 }
+
+
 
 /*Ikony*/
 a .icon, h2 .icon{
@@ -288,6 +292,10 @@ h1,h2, h3, h4, h5, h6, a, span, p, input, th, select option {
 
 .text-orange{
 	color: var(--oragne-color);
+}
+
+.text-blue{
+	color: var(--link-desc-color);
 }
 
 .text-bg-purpel{
@@ -616,6 +624,8 @@ footer .social-box{
 	height: 290px;
 	background-position: center center;
 }
+
+
 .mobile-project{
 	display: none;
 }
@@ -652,7 +662,7 @@ footer .social-box{
 }
 
 .tags-box span{
-	padding: 3px 10px;
+	padding: 5px 10px 3px 10px;
 	border-radius: 10px;
 	color: var(--white-color);
 	text-decoration: none;
@@ -864,7 +874,9 @@ form .main-btn{
 		background-repeat: no-repeat;
 		background-size: cover;
 		height: 230px;
+		transition: var(--hover-speed);
 	}
+
 
 	.mobile-project{
 		display: block;

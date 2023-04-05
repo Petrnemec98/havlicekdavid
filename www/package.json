@@ -1,15 +1,16 @@
 {
-  "name": "www",
+  "name": "havlicekdavid.cz",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
+    "watch": "node-sass sass/ -o ./ --source-map true --output-style expanded --indent-type tab --indent-width 1 -w",
+    "compile:css": "node-sass sass/ -o ./ './sass/**/*.scss' --fix --output-style compressed",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "bricks.js": "^1.8.0",
-    "lightgallery": "^2.7.1"
-  }
+  "devDependencies": {
+    "node-sass": "^8.0.0"
+  },
+  "description": ""
 }

@@ -5,7 +5,7 @@
 {block content}
 
 <section class="text-content">
-	<p>Přestaňte se bát, že vám nějaký moment unikne? <span class="text-orange">já ho pro vás zachytím!</span></p>
+	<p>Přestaňte se bát, že vám nějaký moment unikne? <a n:href="About:default"><span class="text-blue">já ho pro vás zachytím!</span></a></p>
 
 		{if $user->isLoggedIn()}
 		<div class="admin-btn">
@@ -27,17 +27,19 @@
 
 	{foreach $projects as $project}
 	<a n:href="Project:detail projecturl=>$project->project->url" n:class="item.$project->id">
-		<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->project->id}/{$project->image_format}.webp');" n:class="project, $project->image_format">
-			<div class="project-header">
-				<div class="tags-box">
-					<span n:foreach="$project->project->related(project_has_tag) as $tag" n:class="tag-box, projekt.$tag->tag->id">{$tag->tag->name}</span>
-				</div>
+		<div n:class="project-box">
+			<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->project->id}/{$project->image_format}.webp');" n:class="project, $project->image_format">
+				<div class="project-header">
+					<div class="tags-box">
+						<span n:foreach="$project->project->related(project_has_tag) as $tag" n:class="tag-box, projekt.$tag->tag->id">{$tag->tag->name}</span>
+					</div>
 
-				<div class="header-content">
-					<span class="date">{$project->project->project_date | date:'d. m. Y'}</span>
-					<h2 class="project-cover">{$project->project->name}</h2>
+					<div class="header-content">
+						<span class="date">{$project->project->project_date | date:'d. m. Y'}</span>
+						<h2 class="project-cover">{$project->project->name}</h2>
+					</div>
+					<div class="project-background"></div>
 				</div>
-				<div class="project-background"></div>
 			</div>
 		</div>
 	</a>
