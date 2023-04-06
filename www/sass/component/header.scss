@@ -1,0 +1,28 @@
+.header{
+  margin:$margin-topBottom-desktop;
+  .header__title{
+	text-align: center;
+	.title--secondary{
+	  padding: 0px 0px 10px 0px;
+	}
+  }
+  .btn-back{
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	.btn-back__url{
+	  display: block;
+	  height: 24px;
+	  img{
+		fill-opacity: 10%;
+		width: 32px;
+		height: 24px;
+		transition:$transition-speed;
+		opacity: 60%;
+	  }
+	  &:hover img{
+		opacity: 100%;
+	  }
+	}
+  }
+}

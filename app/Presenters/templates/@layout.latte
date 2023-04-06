@@ -32,24 +32,33 @@
 </head>
 
 <body>
-
-{if !$presenter->isLinkCurrent('Homepage:default')}
-	<div class="btn-back">
-		<a href="#" n:if="$backLinkHistory" data-test="{$backLink}" onclick="history.go(-1)">
-			<img src="{$basePath}/assets/images/arrow.svg" alt="Back">
-		</a>
-		<a href="{$backLink}" n:if="!$backLinkHistory">
-			<img src="{$basePath}/assets/images/arrow.svg" alt="Back">
-		</a>
-	</div>
-{/if}
 <div  n:foreach="$flashes as $flash" n:class=" block-center, alert, 'alert-' . $flash->type">
 	<p>{$flash->message}</p>
 </div>
-	<header class="max-width">
-		<aside class="home-btn"><a n:href="Homepage:default">David Havliček</a></aside>
-		<h1>{$heading|noescape}</h1>
+
+<div class="header">
+
+	{if !$presenter->isLinkCurrent('Homepage:default')}
+		<div class="btn-back">
+			<a class="btn-back__url" href="#" n:if="$backLinkHistory" data-test="{$backLink}" onclick="history.go(-1)">
+				<img src="{$basePath}/assets/images/arrow.svg" alt="Back">
+			</a>
+			<a href="{$backLink}" n:if="!$backLinkHistory">
+				<img src="{$basePath}/assets/images/arrow.svg" alt="Back">
+			</a>
+		</div>
+	{/if}
+
+	<header n:class="'header__title'">
+		<aside n:class="'title--secondary'"><a n:href="Homepage:default">David Havliček</a></aside>
+		<h1 n:class="'title--primary'">{$heading|noescape}</h1>
 	</header>
+
+</div>
+
+
+
+
 <div class="max-width block-center flex-box">
 	{include content}
 </div>
