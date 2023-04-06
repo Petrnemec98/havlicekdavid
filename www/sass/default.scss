@@ -1,1 +1,24 @@
+/*Color*/
+$orange:#FF6A3D;
+$yellow:#F4DB7D;
+$orange-light:#f78a6a;
+$blue-dark:#1A2238;
+$blue:#3e5983;
+$blue-light:#9DAAF2;
+$background-cover:linear-gradient(9deg, rgba(0,0,0,1) 10%, rgba(255,255,255,0) 100%);
+
+/*Breakpoint*/
+$breakpoint-mobile: 720px;
+
+/*Transition*/
+$transition-speed: all 0.3s 0s ease;
+
+/*Margin*/
+$margin-topBottom-desktop: 60px 0px;
+$margin-topBottom-mobile: 30px 0px;
+
 @import 'component/project-box';
+@import 'component/tags';
+@import 'component/layouts';
+
+

@@ -1,0 +1,23 @@
+.tags{
+  top: 10px;
+  right: 10px;
+  position: relative;
+  text-align: right;
+  z-index: 5;
+  color: var(--black-color);
+
+  .tags__box{
+	padding: 5px 10px 3px 10px;
+	border-radius: 10px;
+	text-decoration: none;
+	text-align: center;
+
+	&.tags__box--color1{
+	  background-color: $orange;
+	}
+
+	&.tags__box--color2{
+	  background-color: $yellow;
+	}
+  }
+}

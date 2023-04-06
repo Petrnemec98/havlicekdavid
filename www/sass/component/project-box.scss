@@ -1,7 +1,88 @@
 .project-box {
-  background-color: #FF6A3D;
+  background-color: $blue-light;
 
-  image {
+  &.project-box--position-landscape {
+	grid-column: span 2;
+  }
 
+  &.project-box--position-square {
+	grid-column: span 1;
+  }
+
+  @media (max-width: $breakpoint-mobile){
+	&.project-box--position-landscape {
+	  grid-column: span 1;
+	}
+	&.project-box--position-square {
+	  grid-column: span 1;
+	}
+  }
+
+  /*Boxy*/
+  &.project-box--landscape,
+  &.project-box--square,
+  &.project-box--portrait{
+	width: 100%;
+	position: relative;
+  }
+
+  &.project-box--landscape,
+  &.project-box--square,{
+	height: 290px;
+  }
+
+  &.project-box--portrait {
+	height: 590px;
+  }
+
+  .project-box__item {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	.project-box__item--background {
+	  background-repeat: no-repeat;
+	  background-size: cover;
+	  background-position: center;
+	  transition: $transition-speed;
+	  width: 100%;
+	  height: 100%;
+	  position: relative;
+	}
+	.project-box__item--content{
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  position: absolute;
+	  .text{
+		position: absolute;
+		bottom: 10px;
+		margin-left: 10px;
+		z-index: 5;
+	  }
+	  .background-cover{
+		z-index: 1;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		background: $background-cover;
+		transition: $transition-speed;
+		opacity: 25%;
+	  }
+	}
+	&:hover {
+	  .project-box__item--background {
+		scale: 1.1;
+	  }
+	  .project-box__item--content{
+		.background-cover{
+		  opacity:50%;
+		}
+	  }
+	}
   }
 }
