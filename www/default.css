@@ -160,7 +160,7 @@
 
 /*Flotting button*/
 .header {
-	margin: 35px 0px;
+	margin: 35px auto;
 }
 
 .header .header__title {
@@ -192,6 +192,12 @@
 
 .header .btn-back .btn-back__url:hover img {
 	opacity: 100%;
+}
+
+@media (max-width: 720px) {
+	.header {
+		margin: 15px auto;
+	}
 }
 
 .project-box {
@@ -371,5 +377,77 @@
 		margin: 20px 7px;
 	}
 }
+
+.about .title-picture {
+	max-height: 607px;
+	width: 100%;
+	position: relative;
+}
+
+.about .title-picture img {
+	height: 100%;
+	width: 100%;
+}
+
+.about .content-box {
+	background-color: white;
+	width: 70%;
+	margin: 35px auto;
+}
+
+.about .content-box.content-box--minus {
+	margin-top: -70px;
+	position: relative;
+}
+
+.about .content-box.content-box--minus .content-box__text {
+	padding: 50px 10px;
+}
+
+@media (max-width: 720px) {
+	.about .content-box {
+		width: 100%;
+	}
+	.about .content-box.content-box--minus {
+		margin-top: 0px;
+	}
+	.about .content-box.content-box--minus .content-box__text {
+		padding: 15px 15px;
+	}
+}
+
+/*paragraph*/
+.paragraph {
+	padding-top: 15px;
+}
+
+.paragraph.paragraph--left {
+	text-align: left;
+}
+
+.paragraph.paragraph--right {
+	text-align: right;
+}
+
+.paragraph.paragraph--center {
+	text-align: center;
+}
+
+@media (max-width: 720px) {
+	.paragraph {
+		padding-top: 10px;
+	}
+	.paragraph.paragraph--left {
+		text-align: left;
+	}
+	.paragraph.paragraph--right {
+		text-align: left;
+	}
+	.paragraph.paragraph--center {
+		text-align: center;
+	}
+}
+
+/*title*/
 
 /*# sourceMappingURL=default.css.map */

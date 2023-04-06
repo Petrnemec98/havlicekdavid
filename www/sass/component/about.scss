@@ -1,0 +1,35 @@
+.about{
+	.title-picture{
+  		max-height: 607px;
+  		width: 100%;
+  		position: relative;
+  		img{
+			height: 100%;
+			width: 100%;
+		}
+	}
+  .content-box{
+	background-color: white;
+	width: 70%;
+	margin: $margin-topBottom-desktop;
+	&.content-box--minus{
+	  margin-top: -70px;
+	  position: relative;
+	  .content-box__text{
+		padding: 50px 10px;
+	  }
+	}
+  }
+  @media (max-width: $breakpoint-mobile) {
+	.content-box{
+	  width: 100%;
+	  &.content-box--minus{
+		margin-top: 0px;
+		.content-box__text{
+		  padding: 15px 15px;
+		}
+	  }
+	}
+  }
+
+}

@@ -14,14 +14,50 @@ $breakpoint-mobile: 720px;
 $transition-speed: all 0.3s 0s ease;
 
 /*Margin*/
-$margin-topBottom-desktop: 35px 0px;
-$margin-topBottom-mobile: 15px 0px;
+$margin-topBottom-desktop: 35px auto;
+$margin-topBottom-mobile: 15px auto;
 
 @import 'component/flotting-button';
 @import 'component/header';
 @import 'component/project-box';
 @import 'component/tags';
 @import 'component/layouts';
+@import 'component/about';
 
+/*paragraph*/
+.paragraph{
+  padding-top:15px;
+  &.paragraph--left{
+	text-align: left;
+  }
+  &.paragraph--right{
+	text-align: right;
+  }
+  &.paragraph--center{
+	text-align: center;
+  }
+}
+@media (max-width: $breakpoint-mobile) {
+  .paragraph{
+	padding-top:10px;
+	&.paragraph--left{
+	  text-align: left;
+	}
+	&.paragraph--right{
+	  text-align: left;
+	}
+	&.paragraph--center{
+	  text-align: center;
+	}
+  }
 
+}
+
+/*title*/
+.title--primary{
+
+}
+.title--secondary{
+  
+}
 

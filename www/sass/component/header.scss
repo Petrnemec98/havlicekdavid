@@ -26,3 +26,8 @@
 	}
   }
 }
+@media (max-width: $breakpoint-mobile){
+  .header{
+	margin: $margin-topBottom-mobile;
+  }
+}

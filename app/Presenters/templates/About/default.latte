@@ -1,13 +1,20 @@
 {var $title = "O mně"}
-{var $heading ='Ahoj, já jsem David!'}
+{var $heading ='Ahoj, jsem David.'}
 {var $description = ''}
 {var $keywords = ''}
 
 
 {var $back_btn = "Homepage:default"}
 {block content}
-<div class="about-background">
-	<div class="about-box">
-		<p>Foto a video tvůrce!</p>
-	</div>
+<div n:class="about">
+	<picture n:class="title-picture">
+		<img src="{$basePath}/image/me/about-photo.jpg">
+	</picture>
+	<section class="content-box content-box--minus">
+		<div class="content-box__text">
+			<h1>Tvůrce s více než <span class="text-bg-yellow">devíti&nbsp;roky</span> zkušeností</h1>
+			<p class="paragraph paragraph--left">Moje láska k natáčení začala, když jsem od svého strýčka dostal své první Gopro, ještě na základní škole. Focení a natáčení mě nadchlo tak moc, že když jsem se rozhodoval kam na střední, tak Technické lyceum v Liberci byla jasná volba. Škola mi pomohla rozvíjet mé dovednosti jak v oblasti fotografie, tak i videa a celkovým propojením využití multimédií v oblasti propagace. Nejvíce jsem se však naučil praxí při natáčení nejrůznějších akcí přes maturitní plesy, firemní akce až po koncerty známých zpěváků.</p>
+		</div>
+	</section>
 </div>
+
