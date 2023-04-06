@@ -6,37 +6,39 @@
 {varType Nette\Database\Table\ActiveRow $projectDetail}
 {block content}
 
-<div class="project-detail-info">
-	<p><!--<i class="fa-regular fa-calendar"></i> {$projectDetail->project_date | date:'d. m. Y'}--><i class="fa-solid fa-tags"></i> <span n:foreach="$projectDetail->related(project_has_tag) as $tag" n:class="tag-box, projectDetail.$tag->tag->id">{$tag->tag->name} </span></p>
-<section class="text-content">
-	<p>{$projectDetail->description|noescape}</p>
-	{if $user->isLoggedIn()}
-		<div class="admin-btn">
-			<a n:href=":edit, id =>$projectDetail->id">Upravit projekt</a>
-		</div>
-	{/if}
-</section>
+<div class="flex-box">
+	<div class="project-detail-info">
+		<p><!--<i class="fa-regular fa-calendar"></i> {$projectDetail->project_date | date:'d. m. Y'}--><i class="fa-solid fa-tags"></i> <span n:foreach="$projectDetail->related(project_has_tag) as $tag" n:class="tag-box, projectDetail.$tag->tag->id">{$tag->tag->name} </span></p>
+		<section class="text-content">
+			<p>{$projectDetail->description|noescape}</p>
+			{if $user->isLoggedIn()}
+				<div class="admin-btn">
+					<a n:href=":edit, id =>$projectDetail->id">Upravit projekt</a>
+				</div>
+			{/if}
+		</section>
 
-</div>
+	</div>
 
-<div n:snippet="gallery" class="animated-thumbnails-gallery">
+	<div n:snippet="gallery" class="animated-thumbnails-gallery">
 		<div n:foreach="$projectDetail->related(image)->order('order, id') as $image" class="picture">
 			<a data-lightbox="project" href="{$basePath}/image/projects/{$projectDetail->id}/jpg/{$image->id}.jpg">
 				<img src="{$basePath}/image/projects/{$projectDetail->id}/webp/{$image->id}.webp">
 			</a>
 			<div class="editArea" style="position: absolute; margin-top: 12px; margin-left: 2px" n:if="$user->isLoggedIn()">
-			   <a class="admin-btn btn-up ajax" data-naja-history="off" n:href="moveUp! $image->id"><i class="fa-solid fa-up-long"></i></a>
-			   <a class="admin-btn btn-down ajax" data-naja-history="off"  n:href="moveDown! $image->id"><i class="fa-solid fa-down-long"></i></a>
-			   <a class="admin-btn btn-trash ajax" data-naja-history="off"  n:href="remove! $image->id" data-confirm="Opravdu smazat fotografii?"><i class="fa-solid fa-trash"></i></a>
+				<a class="admin-btn btn-up ajax" data-naja-history="off" n:href="moveUp! $image->id"><i class="fa-solid fa-up-long"></i></a>
+				<a class="admin-btn btn-down ajax" data-naja-history="off"  n:href="moveDown! $image->id"><i class="fa-solid fa-down-long"></i></a>
+				<a class="admin-btn btn-trash ajax" data-naja-history="off"  n:href="remove! $image->id" data-confirm="Opravdu smazat fotografii?"><i class="fa-solid fa-trash"></i></a>
 			</div>
 		</div>
+	</div>
+
+
+	<div class="video-box">
+		{$projectDetail->mediabox|noescape}
+	</div>
+
+	<section class="text-content last-text">
+		<p>{$projectDetail->footer}</p>
+	</section>
 </div>
-
-
-<div class="video-box">
-	{$projectDetail->mediabox|noescape}
-</div>
-
-<section class="text-content last-text">
-	<p>{$projectDetail->footer}</p>
-</section>

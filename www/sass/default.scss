@@ -27,37 +27,41 @@ $margin-topBottom-mobile: 15px auto;
 /*paragraph*/
 .paragraph{
   padding-top:15px;
-  &.paragraph--left{
-	text-align: left;
-  }
-  &.paragraph--right{
-	text-align: right;
-  }
-  &.paragraph--center{
-	text-align: center;
-  }
-}
+	}
 @media (max-width: $breakpoint-mobile) {
   .paragraph{
 	padding-top:10px;
-	&.paragraph--left{
-	  text-align: left;
-	}
-	&.paragraph--right{
-	  text-align: left;
-	}
-	&.paragraph--center{
-	  text-align: center;
-	}
   }
 
 }
 
-/*title*/
-.title--primary{
-
-}
-.title--secondary{
-  
+/*TEXT decoration*/
+.title--primary,
+.title--secondary,
+.paragraph,
+{
+ &.black{
+   color: black;
+ }
+  &.white{
+	color: white;
+  }
+  &.orange{
+	color: $orange;
+  }
+  &.left{
+	text-align: left;
+  }
+  &.right{
+	text-align: right;
+  }
+  &.center{
+	text-align: center;
+  }
+  @media (max-width: $breakpoint-mobile) {
+	&.right{
+	  text-align: left;
+	}
+  }
 }
 
