@@ -1,27 +1,27 @@
 {var $title = "O mně"}
 {var $heading ='Ahoj, jsem David.'}
-{var $description = ''}
-{var $keywords = ''}
+{var $description = 'Mladý tvůrce s mnohaletou zkušeností foto a video produkce. Používám nejmodernější techniku od Sony a DJI. Zařizuji také letecké záběry a ostatní letecké služby.'}
+{var $keywords = 'Kameraman, fotograf, Liberec, Praha, letecké služby, letecké záběry, drog, svatba, firemní propagace, videoprodukce'}
 
 
-{var $back_btn = "Homepage:default"}
+
 {block content}
 <div n:class="about">
 	<picture n:class="title-picture">
-		<img src="{$basePath}/image/me/about-photo.jpg">
+		<img src="{$basePath}/image/me/about-photo.webp">
 	</picture>
 	<section class="content-box content-box--minus content-box--70w">
 		<div class="content-box__text">
-			<h1 class="title--primary center">Tvůrce s více než <span class="text-bg-yellow">devíti&nbsp;roky</span> zkušeností</h1>
-			<p class="paragraph paragraph--left">Moje láska k natáčení začala, když jsem od svého strýčka dostal své první Gopro, ještě na základní škole. Focení a natáčení mě nadchlo tak moc, že když jsem se rozhodoval kam na střední, tak Technické lyceum v Liberci byla jasná volba. Škola mi pomohla rozvíjet mé dovednosti jak v oblasti fotografie, tak i videa a celkovým propojením využití multimédií v oblasti propagace. Nejvíce jsem se však naučil praxí při natáčení nejrůznějších akcí přes maturitní plesy, firemní akce až po koncerty známých zpěváků.</p>
+			<h1 class="title--primary center">Profesionál s <span class="text-bg-yellow">dlouholetou praxí</span></h1>
+			<p class="paragraph paragraph--left">Moje láska k natáčení začala, když jsem od svého strýčka dostal své první Gopro, ještě na základní škole.Focení a natáčení mě nadchlo tak moc, že když jsem se rozhodoval kam na střední, tak Technické lyceum v Liberci byla jasná volba. Škola mi pomohla rozvíjet mé dovednosti jak v oblasti fotografie, tak i videa a celkovým využití multimédií v oblasti propagace. Nejvíce jsem se však naučil praxí při natáčení nejrůznějších akcí přes maturitní plesy, firemní akce až po koncerty známých zpěváků.</p>
 		</div>
 	</section>
 	<section class="content-box content-box--100w content-box--grid2">
 		<div class="wrapper content-box__grid-item--1">
 			<div class="wrapper-box">
-				<img src="{$basePath}/image/me/about-photo-1.jpg" alt="Image 1" class="wrapper-box--image image1">
-				<img src="{$basePath}/image/me/about-photo-2.jpg" alt="Image 2" class="wrapper-box--image image2">
-				<img src="{$basePath}/image/me/about-photo-3.jpg" alt="Image 3" class="wrapper-box--image image3">
+				<img src="{$basePath}/image/me/about-photo-second-1.webp" alt="Image 1" class="wrapper-box--image image1">
+				<img src="{$basePath}/image/me/about-photo-second-2.webp" alt="Image 2" class="wrapper-box--image image2">
+				<img src="{$basePath}/image/me/about-photo-second-3.webp" alt="Image 3" class="wrapper-box--image image3">
 			</div>
 		</div>
 		<div class="content-box__text content-box__grid-item--2">
@@ -34,48 +34,72 @@
 		</div>
 	</section>
 
-	<section class="splide" aria-label="carousel">
-		<div class="splide__track">
+	<picture n:class="title-picture">
+		<img src="{$basePath}/image/me/web-dron.webp">
+	</picture>
 
-			<!--Položky v carouselu-->
+	<section class="splide content-box content-box--70w" aria-label="carousel">
+		<h1 class="title--primary black center">Spokojení klienti</h1>
+		<div class="splide__track paragraph">
 			<ul class="splide__list">
 				<li class="splide__slide">
-					<p>Test</p>
+					<picture>
+						<img src="{$basePath}/assets/images/logo/logo-1.webp">
+					</picture>
 				</li>
 				<li class="splide__slide">
-					<p>Test</p>
+					<picture>
+						<img src="{$basePath}/assets/images/logo/logo-2.webp">
+					</picture>
 				</li>
 				<li class="splide__slide">
-					<p>Test</p>
+					<picture>
+						<img src="{$basePath}/assets/images/logo/logo-3.webp">
+					</picture>
 				</li>
 				<li class="splide__slide">
-					<p>Test</p>
+					<picture>
+						<img src="{$basePath}/assets/images/logo/logo-4.webp">
+					</picture>
 				</li>
 				<li class="splide__slide">
-					<p>Test</p>
+					<picture>
+						<img src="{$basePath}/assets/images/logo/logo-5.webp">
+					</picture>
 				</li>
 
 				<li class="splide__slide">
-					<p>Test</p>
+					<picture>
+						<img src="{$basePath}/assets/images/logo/logo-6.webp">
+					</picture>
 				</li>
 
 				<li class="splide__slide">
-					<p>Test</p>
+					<picture>
+						<img src="{$basePath}/assets/images/logo/logo-7.webp">
+					</picture>
+				</li>
+
+				<li class="splide__slide">
+					<picture>
+						<img src="{$basePath}/assets/images/logo/logo-8.webp">
+					</picture>
+				</li>
+
+				<li class="splide__slide">
+					<picture>
+						<img src="{$basePath}/assets/images/logo/logo-9.webp">
+					</picture>
+				</li>
+
+				<li class="splide__slide">
+					<picture>
+						<img src="{$basePath}/assets/images/logo/logo-10.webp">
+					</picture>
 				</li>
 			</ul>
-			<div class="m-auto">
-				<div class="splide__arrows">
-					<button class="splide__arrow splide__arrow--prev d-none d-md-block">
-						<img src="{$basePath}/www/assets/images/next.png">
-					</button>
-					<ul class="splide__pagination"></ul>
-					<button class="splide__arrow splide__arrow--next d-none d-md-block">
-						<img src="{$basePath}/www/assets/images/prev.png">
-					</button>
-				</div>
-			</div>
-
 		</div>
 	</section>
+
 </div>
 

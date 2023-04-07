@@ -1,11 +1,11 @@
 {var $title = 'Foto a video tvůrce'}
-{var $heading = 'Všechny moje projekty'}
-{var $description = ''}
-{var $keywords = ''}
+{var $heading = 'Všechny projekty'}
+{var $description = 'Ukázka mých foto a video projektů z různých sfér. Od svateb, firemních akcí až po koncerty nebo podporu prodeje produktů a služeb vaší firmy. '}
+{var $keywords = 'Fotograf, kameraman, firemní akce, videoukázka produktu, produktové video, video z akce, svatební video a foto'}
 
 {block content}
 <section class="text-content">
-	<p>Prohlídněte si moje další fotky a videa. Pokud se vám moje tvorba líbí! <span class="text-blue">Ozvěte se!</span> </p>
+	<p>Prohlédněte další fotky a videa. Pokud se Vám má tvorba líbí, <span class="text-blue">ozvěte se!</span> </p>
 	{if $user->isLoggedIn()}
 		<div class="admin-btn">
 			<a n:href=":create">Vytvořit nový project</a>
@@ -14,7 +14,7 @@
 </section>
 
 	<div class="filtr-projects" n:snippet="filter">
-		<h2>CO tě nejvíce zajímá?</h2>
+		<h2>Vyberte co vás nejvíce zajímá</h2>
 		<a n:class="($activeFilter===null)?active, ajax"  n:href="Project:default">vše</a>
 		<a n:class="($activeFilter==$tag->url)?active, ajax" n:foreach="$tags as $tag" n:href="Project:default filter=>$tag->url">{$tag->name}</a>
 	</div>

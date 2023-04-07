@@ -50,7 +50,7 @@
 	{/if}
 
 	<header n:class="'header__title'">
-		<aside n:class="'title--secondary'"><a n:href="Homepage:default">David Havliček</a></aside>
+		<aside n:class="'title--secondary'"><a n:href="Homepage:default">David Havlíček</a></aside>
 		<h1 n:class="'title--primary'">{$heading|noescape}</h1>
 	</header>
 
@@ -70,7 +70,7 @@
 	<section class="max-width block-center">
 		<div class="footer-box about">
 			<h2>David Havlíček</h2>
-			<p>Mohu vám zaznamenat nejrůznější akce. Od zážitků z firemních teambuildingů, ukázku produktů pro podporu prodeje či prezentaci vaší firmy až po maturitní plesy a svatby <a n:href="About:default">Zjistit více...</a></p>
+			<p class="paragraph">Mám bohaté zkušenosti s natáčením a focením svateb, maturitních plesů, firemních akcí, záznamů koncertů, rodinným focením i vytvářením animovaných videí. Pokud chcete podpořit své podnikání svěžím vizuálem a ukázat nabízené produkty v co nejlepším světle, jste tu rozhodně správně.<a n:href="About:default">Zjistit více...</a></p>
 			<div class="social-box">
 				<a class="soc-1" aria-label="Napište mi na emial." href="mailto:dhavlicek@gmail.com">
 					<i class="icon">
@@ -138,13 +138,17 @@
 
 <script>
 	new Splide('.splide', {
-		perPage: 1,
+		perPage: 5,
 		breakpoints: {
 			768: {
-				perPage: 1,
+				perPage: 3,
 			},
 		}
 	}).mount();
+</script>
+
+<script>
+	document.addEventListener('contextmenu', event => event.preventDefault());
 </script>
 </body>
 
