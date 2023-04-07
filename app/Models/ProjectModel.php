@@ -9,7 +9,7 @@ use Nette\Utils\Strings;
 use Nette\Utils\Image;
 use Nette\Database\Explorer;
 use App\Services\Direr;
-
+use Nette\InvalidStateException;
 
 class ProjectModel
 {
@@ -57,12 +57,24 @@ class ProjectModel
 	 * @return Nette\Database\Table\Selection
 	 */
 	public function getVisibleProjects($filter=null) {
-		$query= $this->db->table("project")->order("order DESC, id DESC")->where("visible = 1");
+		$query= $this->db->table("project")->order("order, id DESC")->where("visible = 1");
 		if($filter){
 			return $query->where(":project_has_tag.tag.url", $filter);
 		}
 		return $query;
 	}
+
+	/**
+	 * Get all projects (visible and invisible) data from database ordered by order field. 
+	 * 
+	 * @param null|string $filter If not null, projects are filtered by tag url
+	 * @return Nette\Database\Table\Selection
+	 */
+	public function getAllProjects($filter=null) {
+		$query= $this->db->table("project")->order("order, id DESC");
+		return $query;
+	}
+
 
 	/**
 	 * Creates new project record in database.
@@ -245,4 +257,82 @@ class ProjectModel
 		$this->db->table("image")->wherePrimary($pictureId)->delete();
 		//TODO: We need also unlink the file
 	}
+
+
+	/**
+	 * Moves a picture's position within a project's gallery in the specified direction.
+	 * 
+	 * @param int $pictureId The ID of the picture to move.
+	 * @param int $direction The direction in which to move the picture (-1 or 1).
+	 * @return void
+	*/
+	private function moveProject($projectId, $direction) {
+		$i = 1;
+		foreach ($this->db->table("project")->order("order, id") as $row) {
+			if ($row->id == $projectId) {
+				$row->update(["order" => $i + ($direction*3)]);
+			} else {
+				$row->update(["order" => $i]);
+			}
+
+			$i+=2;
+		}
+
+		$i = 1;
+		foreach ($this->db->table("image")->order("order, id") as $row) {
+			$row->update(["order" => $i]);
+			$i+=1;
+		}
+	}
+
+	/**
+	 * Moves a projects's position within a list of projects in the direction up.
+	 * 
+	 * @param int $projectId The ID of the project to move.
+	 * @return void
+	*/
+	public function moveProjectUp($projectId,) {
+		$this->moveProject($projectId, -1);
+	}
+	
+	/**
+	 * Moves a projects's position within a list of projects in the direction down.
+	 * 
+ 	 * @param int $projectId The ID of the project to move.
+	 * @return void
+	*/
+	public function moveProjectDown($projectId) {
+		$this->moveProject($projectId, 1);
+	}
+
+	/**
+	 * Set project's visibility to 1
+	 * 
+ 	 * @param int $projectId The ID of the project to show.
+	 * @return void
+	*/
+	public function showProject($projectId) {
+		$this->db->table("project")->wherePrimary($projectId)->update(["visible" => "1"]);
+	}
+
+	/**
+	 * Set project's visibility to 0
+	 * 
+ 	 * @param int $projectId The ID of the project to hide.
+	 * @return void
+	*/
+	public function hideProject($projectId) {
+		$this->db->table("project")->wherePrimary($projectId)->update(["visible" => "0"]);
+	}
+
+	/**
+	 * Remove project included project folders and images
+	 * 
+ 	 * @param int $projectId The ID of the project to hide.
+	 * @return void
+	*/
+	public function removeProject($projectId) {
+		throw new InvalidStateException("Not implemented yet");
+	}
+
 }

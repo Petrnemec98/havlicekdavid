@@ -158,4 +158,63 @@ final class ProjectPresenter extends \App\Presenters\BasePresenter
 		$this->projectModel->removePicture($id);
 		$this->redrawControl("gallery");
 	}
+
+	/** Handler for moving project order up
+	 * @param int  Id of picture
+	 */
+	public function handleMoveProjectUp($id) {
+		$this->protect();
+		$this->projectModel->moveProjectUp($id);
+		$this->redrawControl("data");
+	}
+	
+	/** Handler for moving project order down
+	 * @param int  Id of picture
+	 */
+	public function handleMoveProjectDown($id) {
+		$this->protect();
+		$this->projectModel->moveProjectDown($id);
+		$this->redrawControl("data");
+	}
+	
+	/** Handler for moving project order down
+	 * @param int  Id of picture
+	 */
+	public function handleHideProject($id) {
+		$this->protect();
+		$this->projectModel->hideProject($id);
+		$this->redrawControl("data");
+	}
+	
+	/** Handler for moving project order down
+	 * @param int  Id of picture
+	 */
+	public function handleShowProject($id) {
+		$this->protect();
+		$this->projectModel->showProject($id);
+		$this->redrawControl("data");
+	}
+	
+	/** Handler for removing project 
+	 * @param int  Id of picture
+	 */
+	public function removeProject($id) {
+		$this->protect();
+		$this->projectModel->removeProject($id);
+		$this->redrawControl("data");
+	}
+	
+
+	/**  
+	 * Protect Admin view before rendering
+	 * 
+	 */
+	public function actionAdmin() {
+		$this->protect();
+	}
+
+	public function renderAdmin() {
+		$this->template->projects  = $this->projectModel->getAllProjects();
+	}
+
 }

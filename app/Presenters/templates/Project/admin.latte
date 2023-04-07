@@ -1,0 +1,36 @@
+{var $title = 'Správa projektů'}
+{var $heading = 'Správa projektů'}
+
+{block content}
+
+<div class="admin-btn">
+	<a n:href=":create">Vytvořit nový projekt</a> 
+</div>
+
+<table class="mb adminTable" >
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Název projektu</th>
+            <th>Fotografií</th>
+            <th>Tagy</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody n:snippet="data">
+        <tr n:foreach="$projects as $project">
+            <td><a n:href="detail $project->url">{$project->id}</a></td>
+            <td>{$project->name}</td>
+            <td>{$project->related(image)->count()}</td>
+            <td><div class="tags"><span n:foreach="$project->related(tag) as $tag" class="tags__box tags__box--color2">{$tag->tag->name}</span></div></td>
+            <td>
+                <a n:href="moveProjectUp! $project->id" class="ajax" data-naja-history="off" title="Zařadit dříve"><i class="fa-solid fa-angle-up"></i></a>
+                <a n:href="moveProjectDown! $project->id" class="ajax" data-naja-history="off" title="Zařadit později"><i class="fa-solid fa-angle-down"></i></a>
+                <a n:href="hideProject! $project->id" class="ajax" n:if="$project->visible" title="Skrýt projekt"><i class="fa-solid fa-eye"></i></a>
+                <a n:href="showProject! $project->id"  class="inactive ajax" n:if="!$project->visible" title="Zobrazit projekt"><i class="fa-solid fa-eye-slash"></i></a>
+                <a n:href="edit $project->id"><i class="fa-solid fa-pen"></i></a>
+                {*<a n:href="removeProject! $project->id" class="danger ajax" data-confirm="Opravdu chcete projekt smazat?"><i class="fa-solid fa-trash"></i></a>*}
+            </td>
+        </tr>
+    </tbody>
+</table>

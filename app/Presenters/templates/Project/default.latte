@@ -8,7 +8,10 @@
 	<p>Prohlédněte další fotky a videa. Pokud se Vám má tvorba líbí, <span class="text-blue">ozvěte se!</span> </p>
 	{if $user->isLoggedIn()}
 		<div class="admin-btn">
-			<a n:href=":create">Vytvořit nový project</a>
+			<a n:href=":create">Vytvořit nový projekt</a> 
+		</div>
+		<div class="admin-btn">
+			<a n:href=":admin">Správa projektů</a>
 		</div>
 	{/if}
 </section>

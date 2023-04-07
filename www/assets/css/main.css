@@ -1,6 +1,3 @@
-
-
-
 html{
 	--black-color:black;
 	--white-color:white;
@@ -56,7 +53,7 @@ a:hover .icon svg{
 	grid-row-gap: 0px;
 	width: 100%;
 }
-.form th,td{
+.form th, .form td{
 	display: block;
 	width: 100%;
 }
@@ -339,6 +336,41 @@ footer .social-box{
 .footer-box p{
 	color: var(--white-color);
 	text-align:left;
+}
+
+.mb {
+	margin-bottom: 1em;
+}
+
+.adminTable {
+	border-collapse: collapse;
+}
+
+.adminTable th {
+	background-color: #f4da7d;
+}
+
+.adminTable td {
+	padding: 10px
+}
+
+.adminTable tbody tr:nth-child(even) {
+	background-color: #eee
+}
+.adminTable tbody  tr:nth-child(odd) {
+	background: #fff
+}
+
+.adminTable tbody  tr:hover {
+	background: #F4DB7D50;
+}
+
+.inactive {
+	color: #999;
+}
+
+.danger {
+	color:red;
 }
 
 @media only screen and (max-width: 720px) {
