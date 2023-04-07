@@ -84,12 +84,12 @@
 		  &.image2{
 			z-index: 2;
 			top: -197px;
-			left: 139px;
+			left: 168px;
 			max-height: 300px;
 		  }
 		  &.image3{
 			z-index: 3;
-			top: -296px;
+			top: -273px;
 			left: 0px;
 			max-height: 180px;
 		  }
@@ -99,15 +99,23 @@
   }
   @media (max-width: $breakpoint-mobile) {
 	.content-box{
+	  margin: $margin-topBottom-mobile;
 	  &.content-box--70w{
 		width: 100%;
 	  }
 	  &.content-box--minus{
 		margin-top: 0px;
+
+		.content-box__text{
+		  padding: 25px 10px;
+		}
+	  }
 		.content-box__text{
 		  padding: 15px 15px;
 		}
-	  }
+.wrapper{
+  margin: 15px auto;
+}
 	}
   }
 

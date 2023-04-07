@@ -3,6 +3,7 @@
 /*Transition*/
 /*Margin*/
 /*Flotting button*/
+@import url(plugins/splide-4.1.3/dist/css/splide-core.min.css);
 .floating-contact-form .contact-icon {
 	position: fixed;
 	bottom: 30px;
@@ -477,18 +478,21 @@
 .about .content-box .wrapper .wrapper-box .wrapper-box--image.image2 {
 	z-index: 2;
 	top: -197px;
-	left: 139px;
+	left: 168px;
 	max-height: 300px;
 }
 
 .about .content-box .wrapper .wrapper-box .wrapper-box--image.image3 {
 	z-index: 3;
-	top: -296px;
+	top: -273px;
 	left: 0px;
 	max-height: 180px;
 }
 
 @media (max-width: 720px) {
+	.about .content-box {
+		margin: 15px auto;
+	}
 	.about .content-box.content-box--70w {
 		width: 100%;
 	}
@@ -496,7 +500,13 @@
 		margin-top: 0px;
 	}
 	.about .content-box.content-box--minus .content-box__text {
+		padding: 25px 10px;
+	}
+	.about .content-box .content-box__text {
 		padding: 15px 15px;
+	}
+	.about .content-box .wrapper {
+		margin: 15px auto;
 	}
 }
 
