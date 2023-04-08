@@ -1,23 +1,6 @@
 .project-box {
   background-color: $blue-light;
 
-  &.project-box--position-landscape {
-	grid-column: span 2;
-  }
-
-  &.project-box--position-square {
-	grid-column: span 1;
-  }
-
-  @media (max-width: $breakpoint-mobile){
-	&.project-box--position-landscape {
-	  grid-column: span 1;
-	}
-	&.project-box--position-square {
-	  grid-column: span 1;
-	}
-  }
-
   /*Boxy*/
   &.project-box--landscape,
   &.project-box--square,
@@ -50,6 +33,9 @@
 	  width: 100%;
 	  height: 100%;
 	  position: relative;
+	}
+	.project-box__item--mobile{
+	  display: none;
 	}
 	.project-box__item--content{
 	  top: 0;
@@ -84,5 +70,16 @@
 		}
 	  }
 	}
+  }
+  @media (max-width: $breakpoint-mobile) {
+	.project-box__item{
+	  .project-box__item--mobile{
+		display: block;
+	  }
+	  .project-box__item--desktop{
+		display: none;
+	  }
+	}
+
   }
 }

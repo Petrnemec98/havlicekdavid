@@ -226,12 +226,6 @@ h2{
 	margin: auto;
 }
 
-p{
-	color: var(--black-color);
-	font-size: 1.2rem;
-	text-align: center;
-}
-
 .max-width{
 	max-width: 1080px;
 }
@@ -403,10 +397,6 @@ footer .social-box{
 }
 .footer-box h2{
 	padding-bottom: 10px;
-}
-
-.footer-box p a{
-	color: var(--oragne-color);
 }
 
 .text-content{

@@ -27,7 +27,7 @@
 	<meta name="msapplication-config" content="{$basePath}/assets/images/browserconfig.xml">
 	<meta name="theme-color" content="#ffffff">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+	<link n:if="$user->isLoggedIn()" rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 
 </head>
 
@@ -69,29 +69,29 @@
 <footer>
 	<section class="max-width block-center">
 		<div class="footer-box about">
-			<h2>David Havlíček</h2>
-			<p class="paragraph">Mám bohaté zkušenosti s natáčením a focením svateb, maturitních plesů, firemních akcí, záznamů koncertů, rodinným focením i vytvářením animovaných videí. Pokud chcete podpořit své podnikání svěžím vizuálem a ukázat nabízené produkty v co nejlepším světle, jste tu rozhodně správně.<a n:href="About:default">Zjistit více...</a></p>
+			<h2 n:class="title--secondary, orange">David Havlíček</h2>
+			<p class="paragraph white left">Mám bohaté zkušenosti s natáčením a focením svateb, maturitních plesů, firemních akcí, záznamů koncertů, rodinným focením i vytvářením animovaných videí. Pokud chcete podpořit své podnikání svěžím vizuálem a ukázat nabízené produkty v co nejlepším světle, jste tu rozhodně správně.  <a n:class="paragraph, orange" n:href="About:default">Zjistit více...</a></p>
 			<div class="social-box">
 				<a class="soc-1" aria-label="Napište mi na emial." href="mailto:dhavlicek@gmail.com">
-					<i class="icon">
+					<div class="icon">
 						<svg>
 							<use class="h2-icon" xlink:href="{$basePath}/assets/images/email.svg#email"></use>
 						</svg>
-					</i>
+					</div>
 				</a>
 				<a class="soc-2" aria-label="Zavolejte mi na telfoní číslo +420607978857" href="tel:+420607978857">
-					<i class="icon">
+					<dvi class="icon">
 						<svg>
 							<use class="h2-icon" xlink:href="{$basePath}/assets/images/call.svg#call"></use>
 						</svg>
-					</i>
+					</dvi>
 				</a>
 				<a class="soc-3" aria-label="Podívej se na můj instagram." target="_blank" href="https://www.instagram.com/davehavv/">
-					<i class="icon">
+					<dvi class="icon">
 						<svg>
 							<use class="h2-icon" xlink:href="{$basePath}/assets/images/instagram.svg#instagram"></use>
 						</svg>
-					</i>
+					</dvi>
 				</a>
 			</div>
 			<p>
@@ -103,11 +103,11 @@
 		<div class="footer-box">
 			<a href="https://www.instagram.com/davehavv/">
 				<h2>
-					<i class="icon">
+					<div class="icon">
 						<svg>
 							<use class="h2-icon" xlink:href="{$basePath}/assets/images/instagram.svg#instagram"></use>
 						</svg>
-					</i>
+					</div>
 					Sledujte moji další tvorbu...
 				</h2>
 			</a>
@@ -121,13 +121,6 @@
 			</div>
 		</div>
 	</section>
-	<!--
-	<section class="max-width block-center">
-		<div class="cookie-box">
-			<a href=""><p>Petr Němec</p></a>
-		</div>
-	</section>
-	-->
 </footer>
 <script src="{$basePath}/assets/js/jQuery.js"></script>
 <script src="{$basePath}/plugins/splide-4.1.3/dist/js/splide.js"></script>
@@ -138,7 +131,7 @@
 
 <script>
 	new Splide('.splide', {
-		perPage: 5,
+		perPage: 6,
 		breakpoints: {
 			768: {
 				perPage: 3,

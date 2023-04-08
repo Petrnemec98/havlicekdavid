@@ -4,11 +4,11 @@
 {var $keywords = 'Fotograf, kameraman, firemní akce, videoukázka produktu, produktové video, video z akce, svatební video a foto'}
 
 {block content}
-<section class="text-content">
-	<p>Prohlédněte další fotky a videa. Pokud se Vám má tvorba líbí, <span class="text-blue">ozvěte se!</span> </p>
+<section>
+	<p n:class="paragraph, center, black">Prohlédněte další fotky a videa. Pokud se Vám má tvorba líbí, <span class="text-blue paragraph" >ozvěte se!</span> </p>
 	{if $user->isLoggedIn()}
 		<div class="admin-btn">
-			<a n:href=":create">Vytvořit nový projekt</a> 
+			<a n:href=":create">Vytvořit nový projekt</a>
 		</div>
 		<div class="admin-btn">
 			<a n:href=":admin">Správa projektů</a>
@@ -17,55 +17,43 @@
 </section>
 
 	<div class="filtr-projects" n:snippet="filter">
-		<h2>Vyberte co vás nejvíce zajímá</h2>
+		<h2>Vyberte si co vás nejvíce zajímá</h2>
 		<a n:class="($activeFilter===null)?active, ajax"  n:href="Project:default">vše</a>
 		<a n:class="($activeFilter==$tag->url)?active, ajax" n:foreach="$tags as $tag" n:href="Project:default filter=>$tag->url">{$tag->name}</a>
 	</div>
 
-	<div class="gallery grid-projects" n:snippet="projects">
+	<div n:class="'layouts layout__projects'" n:snippet="projects">
 		{foreach $projects as $project}
 
 
-			{var $format=($iterator->counter%4>=2)?"landscape":"square"}
-			<div n:class="$format">
-				{if $user->isLoggedIn()}
-					<span><a n:href=":edit, $project->id" n:class="admin-btn, project-admin-btn">Upravit projekt</a></span>
-				{/if}
-				<a n:href="Project:detail projecturl=>$project->url" n:class="item">
-					<!--desktop content-->
-					<div  style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/{$format}.webp');" n:class="project, desktop-mobil, $format">
-						<div class="project-header">
-							<div class="tags-box">
-								<span n:foreach="$project->related(project_has_tag) as $tag" n:class="tag-box, projekt.$tag->tag->id">{$tag->tag->name}</span>
-							</div>
+			{if preg_match('/720|mobile/i', $_SERVER['HTTP_USER_AGENT'])}
+				{var $format="landscape"}
+			{else}
+				{var $format=($iterator->counter%4>=2)?"landscape":"square"}
+			{/if}
 
-							<div class="header-content">
-								<!--<span class="date">{$project->project_date | date:'d. m. Y'}</span>-->
-								<h2 class="project-cover">{$project->name}</h2>
-							</div>
-
-							<div class="project-background"></div>
-						</div>
+			<a n:href="Project:detail projecturl=>$project->url" n:class="project-box, 'project-box--position--'.$format,'project-box--'.$format">
+				<div n:class="project-box__item">
+					<!--Desktop-->
+					<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/{$format}.webp');" n:class="project-box__item--background, project-box__item--desktop">
 					</div>
 
-					<!--mobile content
-					- změna je ve formátu fotek použítýc na background-->
-					<div  style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/landscape.webp');" n:class="project, mobile-project, $format">
-						<div class="project-header">
-							<div class="tags-box">
-								<span n:foreach="$project->related(project_has_tag) as $tag" n:class="tag-box, projekt.$tag->tag->id">{$tag->tag->name}</span>
-							</div>
+					<!-- Mobile-->
+					<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->id}/landscape.webp');" n:class="project-box__item--background, project-box__item--mobile">
+					</div>
 
-							<div class="header-content">
-								<!--<span class="date">{$project->project_date | date:'d. m. Y'}</span>-->
-								<h2 class="project-cover">{$project->name}</h2>
+						<div n:class="project-box__item--content">
+							<div class="tags">
+								<span n:foreach="$project->related(project_has_tag) as $tag" n:class="'tags__box', 'tags__box--color'.$tag->tag->id">{$tag->tag->name}</span>
 							</div>
-
-							<div class="project-background"></div>
+							<div class="text">
+								<h2>{$project->name}</h2>
+							</div>
+							<div class="background-cover"></div>
 						</div>
 					</div>
 				</a>
-			</div>
+
 		{/foreach}
 	</div>
 

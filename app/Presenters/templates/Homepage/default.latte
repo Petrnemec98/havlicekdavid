@@ -5,8 +5,8 @@
 {block content}
 
 <div class="flex-box">
-	<section class="text-content">
-		<p>Přestaňte se bát, že vám nějaký moment unikne? <a n:href="About:default"><span class="text-blue">Já ho pro vás zachytím!</span></a></p>
+	<section>
+		<p class="paragraph center black">Přestaňte se bát, že vám nějaký moment unikne? <a n:href="About:default"><span class="paragraph text-blue">Já ho pro vás zachytím!</span></a></p>
 
 		{if $user->isLoggedIn()}
 			<div class="admin-btn">
@@ -31,6 +31,7 @@
 				<div n:class="project-box__item">
 					<div style="background-image: url('{$basePath|noescape}/image/projects/{$project->project->id}/{$project->image_format}.webp');" n:class="project-box__item--background">
 					</div>
+
 					<div n:class="project-box__item--content">
 						<div class="tags">
 							<span n:foreach="$project->project->related(project_has_tag) as $tag" n:class="'tags__box', 'tags__box--color'.$tag->tag->id">{$tag->tag->name}</span>

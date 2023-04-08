@@ -52,13 +52,18 @@ body {
 
 /*paragraph*/
 .paragraph{
-  padding-top:15px;
   font-family: Oswald;
+  font-size: 1.2rem;
   line-height: 1.3;
+  &.paragraph--pd{
+	padding-top:15px;
+  }
 	}
 @media (max-width: $breakpoint-mobile) {
   .paragraph{
-	padding-top:10px;
+	&.paragraph--pd{
+	  padding-top:10px;
+	}
   }
 
 }

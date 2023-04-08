@@ -8,7 +8,6 @@
 
 <div class="flex-box">
 	<div class="project-detail-info">
-		<p><!--<i class="fa-regular fa-calendar"></i> {$projectDetail->project_date | date:'d. m. Y'}--><i class="fa-solid fa-tags"></i> <span n:foreach="$projectDetail->related(project_has_tag) as $tag" n:class="tag-box, projectDetail.$tag->tag->id">{$tag->tag->name} </span></p>
 		<section class="text-content">
 			<p>{$projectDetail->description|noescape}</p>
 			{if $user->isLoggedIn()}
