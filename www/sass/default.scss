@@ -40,6 +40,9 @@ $margin-topBottom-mobile: 15px auto;
 @import 'component/tags';
 @import 'component/layouts';
 @import 'component/about';
+@import 'component/content-box';
+@import 'component/wrapper';
+@import 'component/splide';
 @import 'plugins/splide-4.1.3/dist/css/splide-core.min.css';
 
 body {

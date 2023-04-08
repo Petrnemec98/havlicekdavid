@@ -9,15 +9,4 @@
 	width: 100%;
 }
 
-.about .content-box {
-	background-color: white;
-	width: 70%;
-	margin: auto;
-}
-
-.about .content-box.content-box--minus {
-	margin-top: -50px;
-	position: relative;
-}
-
 /*# sourceMappingURL=about.css.map */
