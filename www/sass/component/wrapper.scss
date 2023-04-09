@@ -36,6 +36,22 @@
   }
   @media (max-width: $breakpoint-mobile){
 	margin: 15px auto;
+	.wrapper-box{
+	  margin: auto;
+	  .wrapper-box--image{
+		&.image1{
+		  max-height: 250px;
+		}
+		&.image2{
+		  max-height: 220px;
+		  top: -156px;
+		  left: 130px;
+		}
+		&.image3{
+		  top: -209px;
+		}
+	  }
+	}
   }
 }
 

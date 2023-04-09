@@ -4,8 +4,8 @@
 {var $keywords = 'Fotograf, kameraman, firemní akce, videoukázka produktu, produktové video, video z akce, svatební video a foto'}
 
 {block content}
-<section>
-	<p n:class="paragraph, center, black">Prohlédněte další fotky a videa. Pokud se Vám má tvorba líbí, <span class="text-blue paragraph" >ozvěte se!</span> </p>
+<section class="content-box">
+	<p n:class="paragraph, center, black">Prohlédněte další fotky a videa. Pokud se Vám má tvorba líbí, <a href="https://www.instagram.com/davehavv/" target=”_blank” ><span class="text-blue paragraph" >ozvěte se!</span></a> </p>
 	{if $user->isLoggedIn()}
 		<div class="admin-btn">
 			<a n:href=":create">Vytvořit nový projekt</a>
@@ -26,11 +26,8 @@
 		{foreach $projects as $project}
 
 
-			{if preg_match('/720|mobile/i', $_SERVER['HTTP_USER_AGENT'])}
-				{var $format="landscape"}
-			{else}
-				{var $format=($iterator->counter%4>=2)?"landscape":"square"}
-			{/if}
+
+			{var $format=($iterator->counter%4>=2)?"landscape":"square"}
 
 			<a n:href="Project:detail projecturl=>$project->url" n:class="project-box, 'project-box--position--'.$format,'project-box--'.$format">
 				<div n:class="project-box__item">

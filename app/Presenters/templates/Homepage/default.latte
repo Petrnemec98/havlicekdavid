@@ -5,8 +5,8 @@
 {block content}
 
 <div class="flex-box">
-	<section>
-		<p class="paragraph center black">Přestaňte se bát, že vám nějaký moment unikne? <a n:href="About:default"><span class="paragraph text-blue">Já ho pro vás zachytím!</span></a></p>
+	<section class="content-box">
+		<p class="paragraph center black">Přestaňte se bát, že vám nějaký moment unikne, <a n:href="About:default"><span class="paragraph text-blue">já ho pro vás zachytím!</span></a></p>
 
 		{if $user->isLoggedIn()}
 			<div class="admin-btn">
@@ -40,24 +40,29 @@
 							<h2>{$project->project->name}</h2>
 						</div>
 						<div class="background-cover"></div>
-
 					</div>
-
-
 				</div>
 			</a>
 		{/foreach}
 
-		<a n:href="About:default" n:class="item6">
-			<div style="background-image: url('{$basePath|noescape}/image/me/homepage.webp');" n:class="project, square">
-				<div class="project-header">
-					<div class="header-content me">
-						<h2 class="project-cover">O MNĚ</h2>
-						<span class="fake-btn">Zobrazit více</span>
-					</div>
+
+		<a n:href="About:default" n:class="project-box, project-box--position6, project-box--square ">
+			<div n:class="project-box__item">
+				<div style="background-image: url('{$basePath|noescape}/image/me/homepage.webp');" n:class="project-box__item--background, project-box__item--desktop">
+				</div>
+
+				<div style="background-image: url('{$basePath|noescape}/image/me/homepage_mobile.webp');" n:class="project-box__item--background, project-box__item--mobile">
+				</div>
+
+				<div n:class="project-box__item--content">
+
+					<h2 class="project-cover title--primary yellow margin--10">Ahoj, </br>já jsem David!</h2>
+					<button class="btn btn--center btn--primary btn--yellow">Zobrazit více</button>
+
 				</div>
 			</div>
 		</a>
+
 	</section>
 </div>
 

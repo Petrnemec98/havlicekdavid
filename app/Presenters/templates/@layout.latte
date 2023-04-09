@@ -72,7 +72,7 @@
 			<h2 n:class="title--secondary, orange">David Havlíček</h2>
 			<p class="paragraph white left">Mám bohaté zkušenosti s natáčením a focením svateb, maturitních plesů, firemních akcí, záznamů koncertů, rodinným focením i vytvářením animovaných videí. Pokud chcete podpořit své podnikání svěžím vizuálem a ukázat nabízené produkty v co nejlepším světle, jste tu rozhodně správně.  <a n:class="paragraph, orange" n:href="About:default">Zjistit více...</a></p>
 			<div class="social-box">
-				<a class="soc-1" aria-label="Napište mi na emial." href="mailto:dhavlicek@gmail.com">
+				<a class="soc-1" aria-label="Napište mi na emial." href="mailto:dahavlicek@gmail.com">
 					<div class="icon">
 						<svg>
 							<use class="h2-icon" xlink:href="{$basePath}/assets/images/email.svg#email"></use>
@@ -93,6 +93,9 @@
 						</svg>
 					</dvi>
 				</a>
+				<a class="soc-4" aria-label="Napište mi na emial." href="mailto:dahavlicek@gmail.com"><p class="paragraph white left">dahavlicek@gmail.com</p></a>
+				<a class="soc-5" aria-label="Zavolejte mi na telfoní číslo +420607978857" href="tel:+420607978857"><p class="paragraph white left">+420 607 978 857</p></a>
+				<a class="soc-6" aria-label="Podívej se na můj instagram." target="_blank" href="https://www.instagram.com/davehavv/"><p class="paragraph white left">@davehavv</p></a>
 			</div>
 			<p>
 				{if $user->isLoggedIn()}
@@ -123,12 +126,15 @@
 	</section>
 </footer>
 <script src="{$basePath}/assets/js/jQuery.js"></script>
-<script src="{$basePath}/plugins/splide-4.1.3/dist/js/splide.js"></script>
+{if $presenter->isLinkCurrent('About:default')}
+<script src="{$basePath}/plugins/splide-4.1.3/dist/js/splide.min.js"></script>
+{/if}
 <script src="{$basePath}/modules/justifiedGallery.min/jquery.justifiedGallery.min.js"></script>
 <script src="https://unpkg.com/naja@2/dist/Naja.min.js"></script>
 <script src="{$basePath}/assets/js/lightbox.min.js"></script>
 <script src="{$basePath}/assets/js/main.js"></script>
 
+{if $presenter->isLinkCurrent('About:default')}
 <script>
 	new Splide('.splide', {
 		perPage: 6,
@@ -139,10 +145,8 @@
 		}
 	}).mount();
 </script>
+{/if}
 
-<script>
-	document.addEventListener('contextmenu', event => event.preventDefault());
-</script>
 </body>
 
 </html>

@@ -34,6 +34,7 @@ $margin-topBottom-mobile: 15px auto;
 }
 
 
+
 @import 'component/flotting-button';
 @import 'component/header';
 @import 'component/project-box';
@@ -43,14 +44,12 @@ $margin-topBottom-mobile: 15px auto;
 @import 'component/content-box';
 @import 'component/wrapper';
 @import 'component/splide';
+@import 'component/btn';
 @import 'plugins/splide-4.1.3/dist/css/splide-core.min.css';
 
-body {
-  /* zakázat výskyt kontextového menu */
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
+
+a{
+  cursor: pointer;
 }
 
 /*paragraph*/
@@ -60,6 +59,11 @@ body {
   line-height: 1.3;
   &.paragraph--pd{
 	padding-top:15px;
+  }
+  a{
+	color: $blue;
+	font-family: Oswald;
+	font-size: 1.2rem;
   }
 	}
 @media (max-width: $breakpoint-mobile) {
@@ -85,8 +89,14 @@ body {
   &.orange{
 	color: $orange;
   }
+  &.yellow{
+	color: $yellow;
+  }
   &.left{
 	text-align: left;
+  }
+  &.margin--10{
+	margin: 10px 10px;
   }
   &.right{
 	text-align: right;

@@ -1,0 +1,17 @@
+.btn.btn--center {
+	margin: auto;
+	position: absolute;
+	display: block;
+	text-align: center;
+	bottom: 10px;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+.btn.btn--primary {
+	font-size: 1.5rem;
+	font-family: "Bebas Neue";
+}
+
+/*# sourceMappingURL=btn.css.map */

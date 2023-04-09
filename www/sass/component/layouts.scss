@@ -72,6 +72,7 @@
 	}
   }
   @media (max-width: $breakpoint-mobile){
+	margin: 0px auto 20px auto;
 	&.layout__projects{
 	  grid-template-columns: repeat(1, 1fr);
 	  width: 97%;
