@@ -1,12 +1,12 @@
 {var $title = 'Foto a video tvůrce'}
 {var $heading = 'Foto a video <span class="text-bg-yellow">tvůrce</span>'}
 {var $description = 'Kameraman a fotograf s mnohaletou praxí. Ukázka dosavadní tvorby svateb, firemních propagací, podpory prodeje produktů až po maturitní plesy nebo koncerty a hudební videoklipy.'}
-{var $keywords = 'Fotograf, Kameraman, Svatební video, firemní video, svatební fotograf, fotograf Liberec, Fotograf Liberec, firemní akce, letecké fotografie, Dron'}
+{var $keywords ='Fotograf, Kameraman, Svatební video, firemní video, svatební fotograf, fotograf Liberec, Fotograf Liberec, firemní akce, letecké fotografie, Dron'}
 {block content}
 
 <div class="flex-box">
 	<section class="content-box">
-		<p class="paragraph center black">Přestaňte se bát, že vám nějaký moment unikne, <a n:href="About:default"><span class="paragraph text-blue">já ho pro vás zachytím!</span></a></p>
+		<p class="paragraph center black">Přestaňte se bát, že vám nějaký moment unikne. <a n:href="About:default"><span class="paragraph text-blue">Já ho pro vás zachytím!</span></a></p>
 
 		{if $user->isLoggedIn()}
 			<div class="admin-btn">
@@ -25,6 +25,9 @@
 				<i class="fa-solid fa-photo-film"></i>
 				<p>Další projekty</p></a>
 		</div>
+
+
+
 
 		{foreach $projects as $project}
 			<a n:href="Project:detail projecturl=>$project->project->url" n:class="project-box, 'project-box--position'.$project->id,'project-box--'.$project->image_format">
@@ -56,7 +59,7 @@
 
 				<div n:class="project-box__item--content">
 
-					<h2 class="project-cover title--primary yellow margin--10">Ahoj, </br>já jsem David!</h2>
+					<h2 class="project-cover title--primary yellow margin--10">Ahoj, </br>já jsem David</h2>
 					<button class="btn btn--center btn--primary btn--yellow">Zobrazit více</button>
 
 				</div>
